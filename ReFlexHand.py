@@ -41,6 +41,16 @@ TheArm = p.loadURDF("Models/Frankenstein/Frankenstein.urdf",cubeStartPos, cubeSt
 
 print(p.getNumJoints(boxId2))
 print(p.getNumJoints(TheArm))
+
+
+for joint_index in range(0,p.getNumJoints(boxId3)):
+    print()
+    info = p.getJointInfo(boxId3,joint_index)
+    print("Joint index: " + str(info[0]))
+    print("Joint name: " + str(info[1]))
+    print("Joint type: " + str(info[2]))
+    print()
+
  
 
 #Run the simulation

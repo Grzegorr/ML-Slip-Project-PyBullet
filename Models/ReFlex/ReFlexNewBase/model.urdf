@@ -1,0 +1,1572 @@
+<?xml version="1.0" ?>
+
+<robot name="rhr_flex_model">
+
+  <link name="flex_link_1">
+    <visual>
+      <origin xyz="0.008 0 0"/>
+      <geometry>
+        <box size="0.016 0.014 0.006"/>
+      </geometry>
+      <material name="dark gray">
+        <color rgba="0.2 0.2 .2 1"/>
+      </material>
+    </visual>
+
+    <inertial>
+      <origin xyz="0.008 0 0"/>
+      <mass value="0.002688"/>
+      <inertia ixx="0.000000051968" ixy="0.0" ixz="0.0" iyy="0.000000065408" iyz="0.0" izz="0.000000101248"/>
+    </inertial>
+    <collision>
+      <origin xyz="0.008 0 0"/>
+      <geometry>
+        <box size="0.016 0.014 0.006"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="flex_link_2">
+    <visual>
+      <origin xyz="0.008 0 0"/>
+      <geometry>
+        <box size="0.016 0.014 0.006"/>
+      </geometry>
+      <material name="dark gray">
+        <color rgba="0.2 0.2 .2 1"/>
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <inertial>
+      <origin xyz="0.008 0 0"/>
+      <mass value="0.002688"/>
+      <inertia ixx="0.000000051968" ixy="0.0" ixz="0.0" iyy="0.000000065408" iyz="0.0" izz="0.000000101248"/>
+    </inertial>
+    <!-- Mabel -->
+    <collision>
+      <origin xyz="0.008 0 0"/>
+      <geometry>
+        <box size="0.016 0.014 0.006"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="flex_link_3">
+    <visual>
+      <origin xyz="0.008 0 0"/>
+      <geometry>
+        <box size="0.016 0.014 0.006"/>
+      </geometry>
+      <material name="dark gray">
+        <color rgba="0.2 0.2 .2 1"/>
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <inertial>
+      <origin xyz="0.008 0 0"/>
+      <mass value="0.002688"/>
+      <inertia ixx="0.000000051968" ixy="0.0" ixz="0.0" iyy="0.000000065408" iyz="0.0" izz="0.000000101248"/>
+    </inertial>
+    <!-- Mabel -->
+    <collision>
+      <origin xyz="0.008 0 0"/>
+      <geometry>
+        <box size="0.016 0.014 0.006"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="flex_joint_1" type="fixed">
+    <parent link="proximal_1"/>
+    <child link="flex_link_1"/>
+    <origin xyz="0.06 0 0.003"/>
+    <axis xyz="0 -1 0"/>
+  </joint>
+  <joint name="flex_joint_2" type="fixed">
+    <parent link="proximal_2"/>
+    <child link="flex_link_2"/>
+    <origin xyz="0.06 0 0.003"/>
+    <axis xyz="0 -1 0"/>
+  </joint>
+  <joint name="flex_joint_3" type="fixed">
+    <parent link="proximal_3"/>
+    <child link="flex_link_3"/>
+    <origin xyz="0.06 0 0.003"/>
+    <axis xyz="0 -1 0"/>
+  </joint>
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/base_link.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.22 0.22 0.22 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.014 0 0.051"/>
+      <geometry>
+        <box size="0.128 0.099 0.085"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <origin xyz="0.006633 -0.000192 0.042664"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.271197"/>
+      <inertia ixx="0.00035015" ixy="-0.00000237" ixz="-0.00000830" iyy="0.00052174" iyz="-0.00000051" izz="0.00061823"/>
+    </inertial>
+  </link>
+  <link name="pad">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/pad.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.6 0.0 0.0 1"/>
+        <!--    <color rgba="0.686 0.0706 0.8039 1"/> -->
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/pad.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.000001 0.008858 0.013059"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.113819"/>
+      <inertia ixx="0.00010653" ixy="-0.00000000" ixz="-0.00000001" iyy="0.00018331" iyz="-0.00000149" izz="0.00008642"/>
+    </inertial>
+  </link>
+  <joint name="pad_joint" type="fixed">
+    <origin rpy="1.5707963267949 5.55111512312578E-17 -1.5707963267949" xyz="0.02 0 0.063"/>
+    <parent link="base_link"/>
+    <child link="pad"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <link name="swivel_1">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/swivel_1.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.22 0.22 0.22 1"/>
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/swivel_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.005259 -0.000001 0.011236"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.012584"/>
+      <inertia ixx="0.00000232" ixy="0.00000000" ixz="-0.00000041" iyy="0.00000177" iyz="0.00000000" izz="0.00000237"/>
+    </inertial>
+  </link>
+  <joint name="preshape_1" type="revolute">
+    <!-- Mabel: None of the joints are really continuous. They should all be
+      revolute.-->
+    <!--type="continuous"-->
+    <origin rpy="6.75550818663469E-16 1.97993848419069E-16 -2.77555756156289E-16" xyz="0.0503973683071414 -0.026 0.063"/>
+    <parent link="base_link"/>
+    <child link="swivel_1"/>
+    <axis xyz="0 0 -1"/>
+    <!-- Mabel. Limits from reflex/src/reflex/reflex_base_services.py PRESHAPE_MAX -->
+    <limit effort="2.5" lower="0" upper="1.6" velocity="1.0"/>
+  </joint>
+  <link name="proximal_1">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_1.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.35 0.35 0.35 1"/>
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.024094 0.000000 0.000819"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.017012"/>
+      <inertia ixx="0.00000076" ixy="-0.00000000" ixz="-0.00000023" iyy="0.00000735" iyz="-0.00000000" izz="0.00000714"/>
+    </inertial>
+  </link>
+  <joint name="proximal_joint_1" type="revolute">
+    <!--type="continuous"-->
+    <origin rpy="-6.20039667432211E-16 2.40507565059625E-17 2.22044604925031E-16" xyz="0.01 0 0.0186"/>
+    <parent link="swivel_1"/>
+    <child link="proximal_1"/>
+    <axis xyz="0 -1 0"/>
+    <!-- Mabel -->
+    <limit effort="2.5" lower="0" upper="3.14" velocity="1.0"/>
+  </joint>
+  <link name="proximal_pad_1">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_pad_1.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.6 0.0 0.0 1"/>
+        <!--    <color rgba="0.686 0.0706 0.8039 1"/> -->
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_pad_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.000000 0.012215 -0.034120"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.003393"/>
+      <inertia ixx="0.00000057" ixy="-0.0" ixz="-0.0" iyy="0.00000061" iyz="0.0" izz="0.00000006"/>
+    </inertial>
+  </link>
+  <joint name="prox1_pad_joint" type="fixed">
+    <origin rpy="1.5707963267949 0 -1.5707963267949" xyz="0 0 0"/>
+    <parent link="proximal_1"/>
+    <child link="proximal_pad_1"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <link name="distal_1">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_1.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.35 0.35 0.35 1"/>
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.015422 -0.000000 0.000877"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.005978"/>
+      <inertia ixx="0.00000019" ixy="-0.0" ixz="-0.00000006" iyy="0.00000070" iyz="0.0" izz="0.00000071"/>
+    </inertial>
+  </link>
+  <joint name="distal_joint_1" type="revolute">
+    <!--type="continuous"-->
+    <!--origin
+      xyz="0.0760000000000001} 0 0.00250000000000002"
+      rpy="0 0 0" />
+    <parent
+      link="proximal_1" /-->
+    <!-- Mabel, after adding rigid link btw proximal and distal links. Since
+       distal link cannot have two parents (violates SDF and Gazebo rules),
+       flex link and proximal link cannot both be distal's parent. So we need
+       to link in serial like so, not in parallel:
+         proximal -> prox_to_flex_joint -> flex_link -> flex_to_distal_joint
+           -> distal.
+       We'll ust the distal_joint_# as the joint from flex to distal.
+       Joint from prox to flex, and flex_link, are at top of file.
+     -->
+    <origin rpy="0 0 0" xyz="0.016 0 0.00250000000000002"/>
+    <parent link="flex_link_1"/>
+    <child link="distal_1"/>
+    <axis xyz="0 -1 0"/>
+    <!-- Mabel -->
+    <limit effort="0.25" lower="0" upper="2.74" velocity="1.0"/>
+  </joint>
+  <link name="distal_pad_1">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_pad_1.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.6 0.0 0.0 1"/>
+        <!--    <color rgba="0.686 0.0706 0.8039 1"/> -->
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_pad_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.000000 0.011884 -0.097534"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.002782"/>
+      <inertia ixx="0.00000030" ixy="-0.0" ixz="0.0" iyy="0.00000034" iyz="-0.00000002" izz="0.00000005"/>
+    </inertial>
+  </link>
+  <joint name="dist1_pad_joint" type="fixed">
+    <origin rpy="1.5707963267949 0 -1.5707963267949" xyz="-0.0760000000000001 0 -0.0025"/>
+    <parent link="distal_1"/>
+    <child link="distal_pad_1"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <link name="swivel_2">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/swivel_2.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.22 0.22 0.22 1"/>
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/swivel_2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.005259 -0.000001 0.011236"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.012584"/>
+      <inertia ixx="0.00000232" ixy="0.0" ixz="-0.00000041" iyy="0.00000177" iyz="0.0" izz="0.00000237"/>
+    </inertial>
+  </link>
+  <joint name="preshape_2" type="revolute">
+    <!--type="continuous"-->
+    <origin rpy="1.22459340959228E-15 -7.33448407631817E-16 -1.66533453693773E-16" xyz="0.0503973683071413 0.0259999999999999 0.063"/>
+    <parent link="base_link"/>
+    <child link="swivel_2"/>
+    <axis xyz="0 0 -1"/>
+    <!-- Mabel. Limits from reflex/src/reflex/reflex_base_services.py PRESHAPE_MAX -->
+    <limit effort="2.5" lower="-1.6" upper="0" velocity="1.0"/>
+  </joint>
+  <link name="proximal_2">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_2.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.35 0.35 0.35 1"/>
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.024094 0.000000 0.000819"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.017012"/>
+      <inertia ixx="0.00000076" ixy="-0.0" ixz="-0.00000023" iyy="0.00000735" iyz="-0.0" izz="0.00000714"/>
+    </inertial>
+  </link>
+  <joint name="proximal_joint_2" type="revolute">
+    <!--type="continuous"-->
+    <origin rpy="-1.16908225836102E-15 9.55493012556849E-16 1.11022302462515E-16" xyz="0.01 0 0.0186"/>
+    <parent link="swivel_2"/>
+    <child link="proximal_2"/>
+    <axis xyz="0 -1 0"/>
+    <!-- Mabel -->
+    <limit effort="2.5" lower="0" upper="3.14" velocity="1.0"/>
+  </joint>
+  <link name="proximal_pad_2">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_pad_2.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.6 0.0 0.0 1"/>
+        <!--    <color rgba="0.686 0.0706 0.8039 1"/> -->
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_pad_2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.000000 0.012215 -0.034120"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.003393"/>
+      <inertia ixx="0.00000057" ixy="-0.0" ixz="-0.0" iyy="0.00000061" iyz="0.0" izz="0.00000006"/>
+    </inertial>
+  </link>
+  <joint name="prox2_pad_joint" type="fixed">
+    <origin rpy="1.5707963267949 0 -1.5707963267949" xyz="0 0 0"/>
+    <parent link="proximal_2"/>
+    <child link="proximal_pad_2"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <link name="distal_2">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_2.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.35 0.35 0.35 1"/>
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.015422 -0.000000 0.000877"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.005978"/>
+      <inertia ixx="0.00000019" ixy="-0.0" ixz="-0.00000006" iyy="0.00000070" iyz="0.0" izz="0.00000071"/>
+    </inertial>
+  </link>
+  <joint name="distal_joint_2" type="revolute">
+    <!--type="continuous"-->
+    <!--origin
+      xyz="0.0760000000000001 0 0.00249999999999997"
+      rpy="0 0 0" />
+    <parent
+      link="proximal_2" /-->
+    <!-- Mabel -->
+    <origin rpy="0 0 0" xyz="0.016 0 0.00249999999999997"/>
+    <parent link="flex_link_2"/>
+    <child link="distal_2"/>
+    <axis xyz="0 -1 0"/>
+    <!-- Mabel -->
+    <limit effort="0.25" lower="0" upper="2.74" velocity="1.0"/>
+  </joint>
+  <link name="distal_pad_2">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_pad_2.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.6 0.0 0.0 1"/>
+        <!--    <color rgba="0.686 0.0706 0.8039 1"/> -->
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_pad_2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.000000 0.011884 -0.097534"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.002782"/>
+      <inertia ixx="0.00000030" ixy="-0.0" ixz="0.0" iyy="0.00000034" iyz="-0.00000002" izz="0.00000005"/>
+    </inertial>
+  </link>
+  <joint name="dist2_pad_joint" type="fixed">
+    <origin rpy="1.5707963267949 0 -1.5707963267949" xyz="-0.0760000000000001 0 -0.0025"/>
+    <parent link="distal_2"/>
+    <child link="distal_pad_2"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <link name="proximal_3">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_3.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.35 0.35 0.35 1"/>
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.024094 0.000000 0.000819"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.017012"/>
+      <inertia ixx="0.00000076" ixy="-0.0" ixz="-0.00000023" iyy="0.00000735" iyz="-0.0" izz="0.00000714"/>
+    </inertial>
+  </link>
+  <joint name="proximal_joint_3" type="revolute">
+    <!--type="continuous"-->
+    <origin rpy="-5.55111512312578E-17 -2.22044604925031E-16 3.14159265358979" xyz="-0.0299999999999996 0 0.0816000000000002"/>
+    <parent link="base_link"/>
+    <child link="proximal_3"/>
+    <axis xyz="0 -1 0"/>
+    <!-- Mabel -->
+    <limit effort="2.5" lower="0" upper="3.14" velocity="1.0"/>
+  </joint>
+  <link name="proximal_pad_3">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_pad_3.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.6 0.0 0.0 1"/>
+        <!--    <color rgba="0.686 0.0706 0.8039 1"/> -->
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/proximal_pad_3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.000000 0.012215 -0.034120"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.003393"/>
+      <inertia ixx="0.00000057" ixy="-0.0" ixz="-0.0" iyy="0.00000061" iyz="0.0" izz="0.00000006"/>
+    </inertial>
+  </link>
+  <joint name="prox3_pad_joint" type="fixed">
+    <origin rpy="1.5707963267949 1.22460635382238E-16 -1.5707963267949" xyz="0 0 0"/>
+    <parent link="proximal_3"/>
+    <child link="proximal_pad_3"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <link name="distal_3">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_3.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.35 0.35 0.35 1"/>
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.015422 -0.000000 0.000877"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.005978"/>
+      <inertia ixx="0.00000019" ixy="-0.0" ixz="-0.00000006" iyy="0.00000070" iyz="0.0" izz="0.00000071"/>
+    </inertial>
+  </link>
+  <joint name="distal_joint_3" type="revolute">
+    <!--type="continuous"-->
+    <!--origin
+      xyz="0.0760000000000001 0 0.0025"
+      rpy="-1.48887961834512E-45 -1.0995850059156E-76 -7.38531841236285E-32" />
+    <parent
+      link="proximal_3" /-->
+    <!-- Mabel -->
+    <origin rpy="0 0 0" xyz="0.016 0 0.0025"/>
+    <parent link="flex_link_3"/>
+    <child link="distal_3"/>
+    <axis xyz="0 -1 0"/>
+    <!-- Mabel -->
+    <limit effort="0.25" lower="0" upper="2.74" velocity="1.0"/>
+  </joint>
+  <link name="distal_pad_3">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_pad_3.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.6 0.0 0.0 1"/>
+        <!--    <color rgba="0.686 0.0706 0.8039 1"/> -->
+      </material>
+    </visual>
+    <!-- Mabel -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/distal_pad_3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Mabel -->
+    <inertial>
+      <!-- Center of Mass from MeshLab -->
+      <origin xyz="0.000000 0.011884 -0.097534"/>
+      <!-- Mesh Volume from MeshLab -->
+      <mass value="0.002782"/>
+      <inertia ixx="0.00000030" ixy="-0.0" ixz="0.0" iyy="0.00000034" iyz="-0.00000002" izz="0.00000005"/>
+    </inertial>
+  </link>
+  <joint name="dist3_pad_joint" type="fixed">
+    <origin rpy="1.5707963267949 -1.22460635382238E-16 -1.5707963267949" xyz="-0.0760000000000001 0 -0.0025"/>
+    <parent link="distal_3"/>
+    <child link="distal_pad_3"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <!-- ################ ################ ################ ################ ################ ################ -->
+  <!-- ################ THIS SECTION LINKS THE MARKERS (TACTILE DATA) TO THE CAD MESH ################ -->
+  <!-- ################ COPY AND PASTE THIS FROM urdf/homemade_marker_portion_urdf  ################ -->
+  <!-- ################ ################ ################ ################ ################ ################ -->
+  <joint name="base_tactile_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="base_tactile"/>
+  </joint>
+  <link name="base_tactile"/>
+  <link name="proximal_1_tactile">
+    <!-- Mabel: Added nonzero mass so link doesn't disappear in SDF -->
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001"/>
+    </inertial>
+  </link>
+  <!-- Mabel: Defining as explicit revolute, with 0 limits, so child link shows
+    up explicitly in SDF. Original all _tactile_joint's were type fixed.
+    But defining as revolute means someone (hand_visualizer.cpp) needs to
+    publish the joint values of these joints to /joint_states, otherwise
+    they will not have a tf!!!
+    Changing back to fixed type. `.` I don't know if I need them to be
+    revolute. Why did I want them to show up in sdf anyway? Probably just
+    for debugging when I was still developing this file to be Gazebo-legal!
+    Probably don't need these to be revolute. -->
+  <!--joint name="proximal_1_tactile_joint" type="revolute"-->
+  <joint name="proximal_1_tactile_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="proximal_1"/>
+    <child link="proximal_1_tactile"/>
+    <!--limit effort="0" velocity="0" lower="0" upper="0" /-->
+  </joint>
+  <!--joint name="proximal_2_tactile_joint" type="revolute"-->
+  <joint name="proximal_2_tactile_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="proximal_2"/>
+    <child link="proximal_2_tactile"/>
+    <!--limit effort="0" velocity="0" lower="0" upper="0" /-->
+  </joint>
+  <link name="proximal_2_tactile">
+    <!-- Mabel: Added nonzero mass so link doesn't disappear in SDF -->
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001"/>
+    </inertial>
+  </link>
+  <!-- 24 Jan 2017: Changing back to fixed, so they show up in robot tree -->
+  <!--joint name="proximal_3_tactile_joint" type="revolute"-->
+  <joint name="proximal_3_tactile_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="proximal_3"/>
+    <child link="proximal_3_tactile"/>
+    <!--limit effort="0" velocity="0" lower="0" upper="0" /-->
+  </joint>
+  <link name="proximal_3_tactile">
+    <!-- Mabel: Added nonzero mass so link doesn't disappear in SDF -->
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001"/>
+    </inertial>
+  </link>
+  <!-- 24 Jan 2017: Changing back to fixed, so they show up in robot tree -->
+  <!--joint name="distal_1_tactile_joint" type="revolute"-->
+  <joint name="distal_1_tactile_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="distal_1"/>
+    <child link="distal_1_tactile"/>
+    <!--limit effort="0" velocity="0" lower="0" upper="0" /-->
+  </joint>
+  <link name="distal_1_tactile">
+    <!-- Mabel: Added nonzero mass so link doesn't disappear in SDF -->
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001"/>
+    </inertial>
+  </link>
+  <!-- 24 Jan 2017: Why isn't this revolute??? Did I just forget about it?? TODO
+    That is why in rosrun tf view_frames frames.pdf, distal_2 and distal_3 have
+    children distal_2_tactile and distal_3_tactile, but distal_1 doesn't!!!!
+    The fixed type joints are directly taken as joint values. But the revolute
+    type joints require a publisher for the joint values onto /joint_states,
+    which is hand_visualizer_sim.cpp's job. -->
+  <joint name="distal_2_tactile_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="distal_2"/>
+    <child link="distal_2_tactile"/>
+  </joint>
+  <link name="distal_2_tactile">
+    <!-- Mabel: Added nonzero mass so link doesn't disappear in SDF -->
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001"/>
+    </inertial>
+  </link>
+  <!-- 24 Jan 2017: Why isn't this revolute??? Did I just forget about it?? TODO -->
+  <joint name="distal_3_tactile_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="distal_3"/>
+    <child link="distal_3_tactile"/>
+  </joint>
+  <link name="distal_3_tactile">
+    <!-- Mabel: Added nonzero mass so link doesn't disappear in SDF -->
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001"/>
+    </inertial>
+  </link>
+  <!-- Mabel: Positions for the tactile sensors, so can put simulated touch
+      sensors in each link for Gazebo.
+    Calculation of positions are copied from
+      reflex_visualizer/src/hand_visualizer.cpp . This may need to be adjusted
+      accordingly for final release hand (non-beta). -->
+  <!-- Positions of sensors 1 to 5, all on proximal link -->
+  <!-- sensor_id is 1-based. hand_visualizer.cpp has 0-based index.
+    Here, we need to define the position for child sensor.
+    "index" in hand_visualizer.cpp is 1 to 4.
+    "sensor_id" here is 2 to 5. This is the 
+      sensor for which we are defining the position here.
+    So to substitute for "index" in cpp file's formula, put sensor_id-1 here,
+      in order to define positions for 2 to 5. -->
+  <!-- Explicitly making revolute with limits 0, so SDF doesn't ignore this
+     joint. -->
+  <joint name="prox_1_tactile_to_sensor_1" type="revolute">
+    <origin xyz="0.019 0 0.015"/>
+    <parent link="proximal_1_tactile"/>
+    <child link="Proximal_1/sensor_1"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_1_tactile_to_sensor_2" type="revolute">
+    <origin xyz="0.027 0 0.015"/>
+    <parent link="proximal_1_tactile"/>
+    <child link="Proximal_1/sensor_2"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_1_tactile_to_sensor_3" type="revolute">
+    <origin xyz="0.035 0 0.015"/>
+    <parent link="proximal_1_tactile"/>
+    <child link="Proximal_1/sensor_3"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_1_tactile_to_sensor_4" type="revolute">
+    <origin xyz="0.043 0 0.015"/>
+    <parent link="proximal_1_tactile"/>
+    <child link="Proximal_1/sensor_4"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_1_tactile_to_sensor_5" type="revolute">
+    <origin xyz="0.051000000000000004 0 0.015"/>
+    <parent link="proximal_1_tactile"/>
+    <child link="Proximal_1/sensor_5"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_2_tactile_to_sensor_1" type="revolute">
+    <origin xyz="0.019 0 0.015"/>
+    <parent link="proximal_2_tactile"/>
+    <child link="Proximal_2/sensor_1"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_2_tactile_to_sensor_2" type="revolute">
+    <origin xyz="0.027 0 0.015"/>
+    <parent link="proximal_2_tactile"/>
+    <child link="Proximal_2/sensor_2"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_2_tactile_to_sensor_3" type="revolute">
+    <origin xyz="0.035 0 0.015"/>
+    <parent link="proximal_2_tactile"/>
+    <child link="Proximal_2/sensor_3"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_2_tactile_to_sensor_4" type="revolute">
+    <origin xyz="0.043 0 0.015"/>
+    <parent link="proximal_2_tactile"/>
+    <child link="Proximal_2/sensor_4"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_2_tactile_to_sensor_5" type="revolute">
+    <origin xyz="0.051000000000000004 0 0.015"/>
+    <parent link="proximal_2_tactile"/>
+    <child link="Proximal_2/sensor_5"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_3_tactile_to_sensor_1" type="revolute">
+    <origin xyz="0.019 0 0.015"/>
+    <parent link="proximal_3_tactile"/>
+    <child link="Proximal_3/sensor_1"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_3_tactile_to_sensor_2" type="revolute">
+    <origin xyz="0.027 0 0.015"/>
+    <parent link="proximal_3_tactile"/>
+    <child link="Proximal_3/sensor_2"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_3_tactile_to_sensor_3" type="revolute">
+    <origin xyz="0.035 0 0.015"/>
+    <parent link="proximal_3_tactile"/>
+    <child link="Proximal_3/sensor_3"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_3_tactile_to_sensor_4" type="revolute">
+    <origin xyz="0.043 0 0.015"/>
+    <parent link="proximal_3_tactile"/>
+    <child link="Proximal_3/sensor_4"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="prox_3_tactile_to_sensor_5" type="revolute">
+    <origin xyz="0.051000000000000004 0 0.015"/>
+    <parent link="proximal_3_tactile"/>
+    <child link="Proximal_3/sensor_5"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <!-- Positions of sensors 6 to 9, all on distal link -->
+  <joint name="dist_1_tactile_to_sensor_1" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.013499999999999998 0 0.009"/>
+    <parent link="distal_1_tactile"/>
+    <child link="Distal_1/sensor_1"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="dist_1_tactile_to_sensor_2" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.0215 0 0.009"/>
+    <parent link="distal_1_tactile"/>
+    <child link="Distal_1/sensor_2"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="dist_1_tactile_to_sensor_3" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.0295 0 0.009"/>
+    <parent link="distal_1_tactile"/>
+    <child link="Distal_1/sensor_3"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="dist_1_tactile_to_sensor_4" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.0375 0 0.009"/>
+    <parent link="distal_1_tactile"/>
+    <child link="Distal_1/sensor_4"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="dist_2_tactile_to_sensor_1" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.013499999999999998 0 0.009"/>
+    <parent link="distal_2_tactile"/>
+    <child link="Distal_2/sensor_1"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="dist_2_tactile_to_sensor_2" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.0215 0 0.009"/>
+    <parent link="distal_2_tactile"/>
+    <child link="Distal_2/sensor_2"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="dist_2_tactile_to_sensor_3" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.0295 0 0.009"/>
+    <parent link="distal_2_tactile"/>
+    <child link="Distal_2/sensor_3"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="dist_2_tactile_to_sensor_4" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.0375 0 0.009"/>
+    <parent link="distal_2_tactile"/>
+    <child link="Distal_2/sensor_4"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="dist_3_tactile_to_sensor_1" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.013499999999999998 0 0.009"/>
+    <parent link="distal_3_tactile"/>
+    <child link="Distal_3/sensor_1"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="dist_3_tactile_to_sensor_2" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.0215 0 0.009"/>
+    <parent link="distal_3_tactile"/>
+    <child link="Distal_3/sensor_2"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="dist_3_tactile_to_sensor_3" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.0295 0 0.009"/>
+    <parent link="distal_3_tactile"/>
+    <child link="Distal_3/sensor_3"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="dist_3_tactile_to_sensor_4" type="revolute">
+    <!-- This should be -6, by reasoning. But it shows that distal CoM
+          in Gazebo is one sensor too far toward finger tip. So had to do -7.
+          Must be a mistake somewhere else, but I can't figure out where.
+        sensor_id+5 offset is because I originally numbered distal sensors
+          6-9, but changed to 1-4. -->
+    <origin xyz="0.0375 0 0.009"/>
+    <parent link="distal_3_tactile"/>
+    <child link="Distal_3/sensor_4"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <!-- Define the actual sensors, as links positioned at 0 0 0 (real positions
+     already defined by joints). -->
+  <link name="Proximal_1/sensor_1">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_1/sensor_2">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_1/sensor_3">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_1/sensor_4">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_1/sensor_5">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_1/sensor_1">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_1/sensor_2">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_1/sensor_3">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_1/sensor_4">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0.78539816339 0" xyz="0 0 0.001"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0.78539816339 0" xyz="0 0 0.001"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_2/sensor_1">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_2/sensor_2">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_2/sensor_3">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_2/sensor_4">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_2/sensor_5">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_2/sensor_1">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_2/sensor_2">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_2/sensor_3">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_2/sensor_4">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0.78539816339 0" xyz="0 0 0.001"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0.78539816339 0" xyz="0 0 0.001"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_3/sensor_1">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_3/sensor_2">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_3/sensor_3">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_3/sensor_4">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Proximal_3/sensor_5">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.00045"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_3/sensor_1">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_3/sensor_2">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_3/sensor_3">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.004"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="Distal_3/sensor_4">
+    <!-- This mass and inertia are tested to be stable in Gazebo. If you
+        increase by 10, the finger will start jumping very bad when moved.
+        Sensor mass is very very small!-->
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0.78539816339 0" xyz="0 0 0.001"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0.78539816339 0" xyz="0 0 0.001"/>
+      <geometry>
+        <box size="0.006 0.009 0.0003"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+
+<robot name="slope">
+  <!-- ======================================= -->
+ 
+ 
+ 
+  <link name="shell">
+  <contact>
+      <lateral_friction value="0.5"/>
+      <spinning_friction value="0"/>
+      <rolling_friction value="0"/>
+    </contact>
+    
+    <visual>
+      <origin rpy="0 0 0" xyz="-1 0 0"/>
+      <geometry>
+        <box size="2 1 0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    
+    <collision>
+      <origin rpy="0 0 0" xyz="-1 0 0"/>
+      <geometry>
+        <box size="2 1 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  
+  
+  
+  
+  </robot>
