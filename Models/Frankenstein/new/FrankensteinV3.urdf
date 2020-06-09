@@ -1021,21 +1021,7 @@
       <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001"/>
     </inertial>
   </link>
-  <!-- Mabel: Positions for the tactile sensors, so can put simulated touch
-      sensors in each link for Gazebo.
-    Calculation of positions are copied from
-      reflex_visualizer/src/hand_visualizer.cpp . This may need to be adjusted
-      accordingly for final release hand (non-beta). -->
-  <!-- Positions of sensors 1 to 5, all on proximal link -->
-  <!-- sensor_id is 1-based. hand_visualizer.cpp has 0-based index.
-    Here, we need to define the position for child sensor.
-    "index" in hand_visualizer.cpp is 1 to 4.
-    "sensor_id" here is 2 to 5. This is the 
-      sensor for which we are defining the position here.
-    So to substitute for "index" in cpp file's formula, put sensor_id-1 here,
-      in order to define positions for 2 to 5. -->
-  <!-- Explicitly making revolute with limits 0, so SDF doesn't ignore this
-     joint. -->
+
   <joint name="prox_1_tactile_to_sensor_1" type="fixed">
     <origin xyz="0.019 0 0.015"/>
     <parent link="proximal_1_tactile"/>
@@ -1175,9 +1161,6 @@
   <!-- Define the actual sensors, as links positioned at 0 0 0 (real positions
      already defined by joints). -->
   <link name="Proximal_1/sensor_1">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1187,18 +1170,23 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
-    </visual>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
+    </visual>      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </collision>
   </link>
   <link name="Proximal_1/sensor_2">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1208,6 +1196,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+            <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1217,9 +1208,6 @@
     </collision>
   </link>
   <link name="Proximal_1/sensor_3">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1229,18 +1217,21 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </collision>
   </link>
   <link name="Proximal_1/sensor_4">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1250,6 +1241,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+            <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1258,10 +1252,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Proximal_1/sensor_5">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1271,6 +1263,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+            <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1280,9 +1275,6 @@
     </collision>
   </link>
   <link name="Distal_1/sensor_1">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1292,6 +1284,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.004"/>
@@ -1301,9 +1296,6 @@
     </collision>
   </link>
   <link name="Distal_1/sensor_2">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1313,6 +1305,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+            <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.004"/>
@@ -1321,10 +1316,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Distal_1/sensor_3">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1334,6 +1327,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+            <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.004"/>
@@ -1342,10 +1338,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Distal_1/sensor_4">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1355,6 +1349,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+            <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0.78539816339 0" xyz="0 0 0.001"/>
@@ -1363,10 +1360,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Proximal_2/sensor_1">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1376,6 +1371,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1384,10 +1382,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Proximal_2/sensor_2">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1397,6 +1393,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+            <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1405,10 +1404,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Proximal_2/sensor_3">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1418,6 +1415,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+            <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1426,10 +1426,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Proximal_2/sensor_4">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1439,6 +1437,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+            <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1447,10 +1448,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Proximal_2/sensor_5">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1460,6 +1459,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+            <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1468,10 +1470,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Distal_2/sensor_1">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1481,6 +1481,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.004"/>
@@ -1489,10 +1492,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Distal_2/sensor_2">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1502,6 +1503,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.004"/>
@@ -1510,10 +1514,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Distal_2/sensor_3">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1523,6 +1525,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.004"/>
@@ -1531,10 +1536,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Distal_2/sensor_4">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1544,6 +1547,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0.78539816339 0" xyz="0 0 0.001"/>
@@ -1552,10 +1558,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Proximal_3/sensor_1">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1565,6 +1569,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1573,10 +1580,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Proximal_3/sensor_2">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1586,6 +1591,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1594,10 +1602,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Proximal_3/sensor_3">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1607,6 +1613,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1615,10 +1624,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Proximal_3/sensor_4">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1628,6 +1635,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1636,10 +1646,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Proximal_3/sensor_5">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1649,6 +1657,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.00045"/>
@@ -1658,9 +1669,6 @@
     </collision>
   </link>
   <link name="Distal_3/sensor_1">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1670,6 +1678,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.004"/>
@@ -1678,10 +1689,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Distal_3/sensor_2">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1691,6 +1700,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.004"/>
@@ -1699,10 +1711,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Distal_3/sensor_3">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1712,6 +1722,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.004"/>
@@ -1720,10 +1733,8 @@
       </geometry>
     </collision>
   </link>
+  
   <link name="Distal_3/sensor_4">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -1733,6 +1744,9 @@
       <geometry>
         <box size="0.006 0.009 0.0003"/>
       </geometry>
+      <material name="sensor">
+        <color rgba="0 0.3 0 1"/>
+      </material>
     </visual>
     <collision>
       <origin rpy="0 0.78539816339 0" xyz="0 0 0.001"/>

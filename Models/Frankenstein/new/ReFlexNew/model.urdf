@@ -762,21 +762,6 @@
       <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001"/>
     </inertial>
   </link>
-  <!-- Mabel: Positions for the tactile sensors, so can put simulated touch
-      sensors in each link for Gazebo.
-    Calculation of positions are copied from
-      reflex_visualizer/src/hand_visualizer.cpp . This may need to be adjusted
-      accordingly for final release hand (non-beta). -->
-  <!-- Positions of sensors 1 to 5, all on proximal link -->
-  <!-- sensor_id is 1-based. hand_visualizer.cpp has 0-based index.
-    Here, we need to define the position for child sensor.
-    "index" in hand_visualizer.cpp is 1 to 4.
-    "sensor_id" here is 2 to 5. This is the 
-      sensor for which we are defining the position here.
-    So to substitute for "index" in cpp file's formula, put sensor_id-1 here,
-      in order to define positions for 2 to 5. -->
-  <!-- Explicitly making revolute with limits 0, so SDF doesn't ignore this
-     joint. -->
   <joint name="prox_1_tactile_to_sensor_1" type="fixed">
     <origin xyz="0.019 0 0.015"/>
     <parent link="proximal_1_tactile"/>
@@ -937,9 +922,6 @@
     </collision>
   </link>
   <link name="Proximal_1/sensor_2">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
@@ -958,9 +940,6 @@
     </collision>
   </link>
   <link name="Proximal_1/sensor_3">
-    <!-- This mass and inertia are tested to be stable in Gazebo. If you
-        increase by 10, the finger will start jumping very bad when moved.
-        Sensor mass is very very small!-->
     <inertial>
       <mass value="0.00001"/>
       <inertia ixx="0.00000000001" ixy="0.0" ixz="0.0" iyy="0.00000000001" iyz="0.0" izz="0.00000000001"/>
