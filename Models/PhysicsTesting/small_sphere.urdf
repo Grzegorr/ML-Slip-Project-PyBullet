@@ -8,8 +8,8 @@
   <link name="box">
   <contact>
       <lateral_friction value="1"/>
-      <spinning_friction value="0"/>
-      <rolling_friction value="0"/>
+      <spinning_friction value="1"/>
+      <rolling_friction value="1"/>
     </contact>
     
     <visual>

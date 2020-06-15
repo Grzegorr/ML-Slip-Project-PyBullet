@@ -30,46 +30,32 @@ cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
 Obj4 = p.loadURDF("Models/PhysicsTesting/small_sphere.urdf",cubeStartPos, cubeStartOrientation, useFixedBase = 1)
 
     
-    
-    
-for joint_index in range(0,p.getNumJoints(TheArm)):
-    print()
-    info = p.getJointInfo(TheArm,joint_index)
-    print("Joint index: " + str(info[0]))
-    print("Joint name: " + str(info[1]))
-    print("Joint type: " + str(info[2]))
-    print()
-    
 #Grasping class
 G = Grasp(p,TheArm)
 I = Interface.Interface()
 AC = ArmController(p,TheArm)
 
-#LL, UL = G.returnLimits()
-#IK = p.calculateInverseKinematics(TheArm,8,[0, 0.8, 0.2],targetOrientation = [0,0,0,0], lowerLimits = LL, upperLimits = UL) 
-#IK = p.calculateInverseKinematics(TheArm,9,[0, 0.5, 0.5],targetOrientation = [0,0,1,0])  
-#print(IK)
-#for joint in range(0,7):
- #   p.setJointMotorControl2(bodyUniqueId=TheArm, jointIndex=joint, controlMode=p.POSITION_CONTROL, targetPosition = IK[joint], maxVelocity = 1)
-
-#for joint in [13,30,46]:
-#    p.setJointMotorControl2(bodyUniqueId=TheArm, jointIndex=joint, controlMode=p.POSITION_CONTROL, targetPosition = 1.7, maxVelocity = 1)
-    
-    
-#p.setJointMotorControl2(bodyUniqueId=TheArm, jointIndex=5, controlMode=p.POSITION_CONTROL, targetPosition = 2, maxVelocity = 1)
 
 #Run the simulation
 for i in range (0,200000):
-    AC.frankaJointsLock()
-    if i % 20 == 0:
-        proximal1, proximal2, proximal3, distal1, distal2, distal3 = G.readTactile()
-        I.updateWindow(proximal1, proximal2, proximal3, distal1, distal2, distal3)
-    if i % 5000 <= 2500:
+    if i % 100 == 0:
+        print("Step" + str(i))
+    AC.IKiteration([0.5,0.3,0.5], p.getQuaternionFromEuler([1.57,0,0]), i, 0,500)
+    AC.IKiteration([0.7,0.3,0.2], p.getQuaternionFromEuler([1.57,0,0]), i, 500,1000)
+    AC.IKiteration([0.5,0.2,0.2], p.getQuaternionFromEuler([1.57,0,0]), i, 1000,1500)
+    AC.IKiteration([0.5,0.1,0.2], p.getQuaternionFromEuler([1.57,0,0]), i, 1500,2000)
+    AC.IKiteration([0.5,0.02,0.2], p.getQuaternionFromEuler([1.57,0,0]), i, 2000,2500)
+    if i == 2500:
+        AC.frankaJointsLock()
+    if i % 4000 <= 2000 and i > 2500:
         G.closeHandTorques()
         G.spreadFingers(60)
-    if i % 5000 > 2500:
+    if i % 4000 > 2000 and i > 2500:
         G.openHandTorques()
         G.spreadFingers(60)
+    if i % 40 == 0:
+        proximal1, proximal2, proximal3, distal1, distal2, distal3 = G.readTactile()
+        I.updateWindow(proximal1, proximal2, proximal3, distal1, distal2, distal3)    
     p.stepSimulation()
     time.sleep(1./240.)
     

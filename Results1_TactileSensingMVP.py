@@ -45,19 +45,6 @@ G = Grasp(p,TheArm)
 I = Interface.Interface()
 AC = ArmController(p,TheArm)
 
-#LL, UL = G.returnLimits()
-#IK = p.calculateInverseKinematics(TheArm,8,[0, 0.8, 0.2],targetOrientation = [0,0,0,0], lowerLimits = LL, upperLimits = UL) 
-#IK = p.calculateInverseKinematics(TheArm,9,[0, 0.5, 0.5],targetOrientation = [0,0,1,0])  
-#print(IK)
-#for joint in range(0,7):
- #   p.setJointMotorControl2(bodyUniqueId=TheArm, jointIndex=joint, controlMode=p.POSITION_CONTROL, targetPosition = IK[joint], maxVelocity = 1)
-
-#for joint in [13,30,46]:
-#    p.setJointMotorControl2(bodyUniqueId=TheArm, jointIndex=joint, controlMode=p.POSITION_CONTROL, targetPosition = 1.7, maxVelocity = 1)
-    
-    
-#p.setJointMotorControl2(bodyUniqueId=TheArm, jointIndex=5, controlMode=p.POSITION_CONTROL, targetPosition = 2, maxVelocity = 1)
-
 #Run the simulation
 for i in range (0,200000):
     AC.frankaJointsLock()

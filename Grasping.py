@@ -13,6 +13,7 @@ class Grasping:
         self.RadToDeg = 3.14/180.0
         #TURN ON FORCE AND TORQUE SENSING IN THE JOINTS
         self.turnSensorsOn()
+        self.lockSpreadFingersJoints()
         
     def returnLimits(self):
         return self.lowerlimits, self.upperlimits
@@ -20,17 +21,17 @@ class Grasping:
     def closeHandTorques(self):
         print("Closing Hand")
         self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=11, controlMode=self.client.VELOCITY_CONTROL, force = 0)
-        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=11, controlMode=self.client.TORQUE_CONTROL, force = 1)  
+        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=11, controlMode=self.client.TORQUE_CONTROL, force = 10)  
         self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=28, controlMode=self.client.VELOCITY_CONTROL, force = 0)
-        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=28, controlMode=self.client.TORQUE_CONTROL, force = 1)
+        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=28, controlMode=self.client.TORQUE_CONTROL, force = 10)
         self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=44, controlMode=self.client.VELOCITY_CONTROL, force = 0)
-        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=44, controlMode=self.client.TORQUE_CONTROL, force = 1)
+        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=44, controlMode=self.client.TORQUE_CONTROL, force = 10)
         self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=13, controlMode=self.client.VELOCITY_CONTROL, force = 0)
-        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=13, controlMode=self.client.TORQUE_CONTROL, force = 0.2)
+        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=13, controlMode=self.client.TORQUE_CONTROL, force = 2)
         self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=30, controlMode=self.client.VELOCITY_CONTROL, force = 0)
-        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=30, controlMode=self.client.TORQUE_CONTROL, force = 0.2)
+        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=30, controlMode=self.client.TORQUE_CONTROL, force = 2)
         self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=46, controlMode=self.client.VELOCITY_CONTROL, force = 0)
-        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=46, controlMode=self.client.TORQUE_CONTROL, force = 0.2)
+        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=46, controlMode=self.client.TORQUE_CONTROL, force = 2)
     
     def openHandTorques(self):
         print("Opening Hand")
@@ -49,8 +50,8 @@ class Grasping:
     
     def spreadFingers(self, targetAng):
         targetAng = targetAng * self.RadToDeg
-        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=10, controlMode=self.client.POSITION_CONTROL, targetPosition = targetAng, maxVelocity = 1) 
-        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=27, controlMode=self.client.POSITION_CONTROL, targetPosition = -targetAng, maxVelocity = 1) 
+        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=10, controlMode=self.client.POSITION_CONTROL, targetPosition = targetAng, maxVelocity = 1, force = 100) 
+        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=27, controlMode=self.client.POSITION_CONTROL, targetPosition = -targetAng, maxVelocity = 1, force = 100) 
         
     def stiffFingerClosePosition(self,targetAng):
         targetAng = targetAng * self.RadToDeg
@@ -115,6 +116,10 @@ class Grasping:
         #print(format(proximal1[0], '.4f') + " , " + format(proximal1[1], '.4f') + " , " + format(proximal1[2], '.4f') + " , " + format(proximal1[3], '.4f')+ " , " + format(proximal1[4], '.4f'))
         
         return proximal1, proximal2, proximal3, distal1, distal2, distal3
+    
+    def lockSpreadFingersJoints(self):
+        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=10, controlMode=self.client.VELOCITY_CONTROL, force = 1000)
+        self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=27, controlMode=self.client.VELOCITY_CONTROL, force = 1000)
         
         
         
