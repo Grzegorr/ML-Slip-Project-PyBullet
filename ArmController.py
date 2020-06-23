@@ -28,9 +28,29 @@ class ArmController:
         
     def IKiteration(self, position, Orientation,simStep, startStep, stopStep):
         if simStep > startStep and simStep < stopStep:
-            jointPoses = self.client.calculateInverseKinematics(self.ArmId, 61, position, targetOrientation = Orientation)
+            jointPoses = self.client.calculateInverseKinematics(self.ArmId, 60, position, targetOrientation = Orientation)
             for i in range(len(jointPoses)):
                 self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=i, controlMode=self.client.POSITION_CONTROL, targetPosition=jointPoses[i], targetVelocity=0, force=5000, maxVelocity = 1)
+            
+    def IKiterationAuto(self, position, Orientation,simStep, startStep, stopStep, targetVelocity, maxVel, Vgain, Pgain):
+         if simStep > startStep and simStep < stopStep:
+            jointPoses = self.client.calculateInverseKinematics(self.ArmId, 60, position, targetOrientation = Orientation)
+            for i in range(len(jointPoses)):
+                self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=i, controlMode=self.client.POSITION_CONTROL, targetPosition=jointPoses[i], targetVelocity=targetVelocity, force=5000, maxVelocity = maxVel, velocityGain = Vgain, positionGain = Pgain )
+            
+    def runSeriesOfIKTasks(self,i,tasks):
+    #tasks[x]= [simStepStart, positionEndEffector, orientationEndEffector, targetVel,maxVel, Vgain, Pgain]
+        if i == 0:
+            self.taskCounter = 0
+        #print(self.taskCounter)
+        if i > tasks[self.taskCounter][0]: #is it after the start step of current task
+            if len(tasks)-1 > self.taskCounter: 
+                if i == tasks[self.taskCounter + 1][0]:
+                    self.taskCounter = self.taskCounter + 1
+            jointPoses = self.client.calculateInverseKinematics(self.ArmId, 60, tasks[self.taskCounter][1], targetOrientation = tasks[self.taskCounter][2])
+            for j in range(len(jointPoses)):
+                self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=j, controlMode=self.client.POSITION_CONTROL, targetPosition=jointPoses[j], targetVelocity=tasks[self.taskCounter][3], force=5000, maxVelocity = tasks[self.taskCounter][4], velocityGain = tasks[self.taskCounter][5], positionGain = tasks[self.taskCounter][6] )
+            
             
     def accurateCalculateInverseKinematics(kukaId, endEffectorId, targetPos, threshold, maxIter):
         closeEnough = False
@@ -47,9 +67,10 @@ class ArmController:
                 closeEnough = (dist2 < threshold)
             iter = iter + 1
             
-    def rollLastJoint(self, pos):
+    def rollLastJoint(self, vel):
         #self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=7, controlMode=self.client.POSITION_CONTROL, targetPosition=pos, targetVelocity=0, force=5000, maxVelocity = 1)
-        self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=6, controlMode=self.client.POSITION_CONTROL, targetPosition=pos, targetVelocity=0, force=5000, maxVelocity = 1)
+        self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=6, controlMode=self.client.POSITION_CONTROL, targetPosition=0, targetVelocity=0, force=0)
+        self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=6, controlMode=self.client.VELOCITY_CONTROL, targetVelocity = vel, force = 10, velocityGain = 0.5)
         #self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=5, controlMode=self.client.POSITION_CONTROL, targetPosition=pos, targetVelocity=0, force=5000, maxVelocity = 1)
         #self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=4, controlMode=self.client.POSITION_CONTROL, targetPosition=pos, targetVelocity=0, force=5000, maxVelocity = 1)
         #self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=3, controlMode=self.client.POSITION_CONTROL, targetPosition=pos, targetVelocity=0, force=5000, maxVelocity = 1)
@@ -72,6 +93,7 @@ class ArmController:
             G.spreadFingers(0)
         if i > 6050:
             G.closeHandTorques()
+        
     
     
     

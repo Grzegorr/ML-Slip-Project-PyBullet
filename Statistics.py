@@ -8,13 +8,21 @@ class Statistics:
     
     def __init__(self):
         print("Using Statistics Class")
-        self.proximal1 = np.zeros((10000,5,6))
-        self.proximal2 = np.zeros((10000,5,6))
-        self.proximal3 = np.zeros((10000,5,6))
-        self.distal1 = np.zeros((10000,4,6))
-        self.distal2 = np.zeros((10000,4,6))
-        self.distal3 = np.zeros((10000,4,6))
-        self.handForces = np.zeros((10000,6))
+        
+        self.proximal1 = np.zeros((1000,5,6))
+        self.proximal2 = np.zeros((1000,5,6))
+        self.proximal3 = np.zeros((1000,5,6))
+        self.distal1 = np.zeros((1000,4,6))
+        self.distal2 = np.zeros((1000,4,6))
+        self.distal3 = np.zeros((1000,4,6))
+        self.handForces = np.zeros((1000,6))
+        
+        self.unwantedCollisionFlag = np.zeros(24000)
+        self.failFlag = np.zeros(24000)
+        
+        self.payloadOrientation = np.zeros((24000,4))
+        self.payloadVelocity = np.zeros((24000,3))
+        self.payloadAcceleration = np.zeros((24000,3))
         
     def readWrenches(self, simStep, proximal1, proximal2, proximal3, distal1, distal2, distal3):
         index = int(simStep/24)
@@ -70,6 +78,35 @@ class Statistics:
         index = int(simStep/24)
         self.handForces[index] = forces
         
+    def readPayloadState(self, simStep, linkWorldOrientation, worldLinkLinearVelocity):
+        self.payloadOrientation[simStep][:] = linkWorldOrientation
+        self.payloadVelocity[simStep][:] = worldLinkLinearVelocity
+    
+    #After simulation is finished, takes velocities and computes acceleration    
+    def computeAcceleration(self,ifPrint):
+        for x in range(1,len(self.payloadVelocity)):
+            self.payloadAcceleration[x][1] = (self.payloadVelocity[x][1]-self.payloadVelocity[int(x-1)][1])*240.0
+            self.payloadAcceleration[x][2] = (self.payloadVelocity[x][2]-self.payloadVelocity[int(x-1)][2])*240.0
+            self.payloadAcceleration[x][2] = (self.payloadVelocity[x][1]-self.payloadVelocity[int(x-1)][2])*240.0
+        if ifPrint == "True":
+            plt.figure(1)
+            plt.plot(self.payloadAcceleration[:,0], label = "Load accelecration X")
+            plt.plot(self.payloadAcceleration[:,1], label = "Load accelecration Y")
+            plt.plot(self.payloadAcceleration[:,2], label = "Load accelecration Z")
+            plt.legend(bbox_to_anchor=(0, 1), loc='lower left', ncol = 3)
+            plt.show()
+            
+    def printFlags(self, ifPrint):
+        if ifPrint != "True":
+            return
+        plt.figure(2)
+        plt.plot(self.unwantedCollisionFlag[:], label = "Unwanted Collision Flag")
+        plt.plot(self.failFlag[:], label = "Grasp Failure Flag")
+        plt.legend(bbox_to_anchor=(0, 1), loc='lower left', ncol = 2)
+        plt.show()
+            
+        
+        
     def printForcesHand(self,simStep):
         index = int(simStep/24)
         plt.clf()
@@ -84,6 +121,20 @@ class Statistics:
 
         plt.legend(bbox_to_anchor=(0, 1), loc='lower left', ncol = 3)
         plt.show()
+        
+    def datasetEntryPrepareAndSave(self, tasks):
+        #line 1 - tactile info, line 2 - flags, line 3 - payload physics, line 4 - tasks, 
+        dataset = [self.proximal1[:][:][2], self.proximal2[:][:][2], self.proximal3[:][:][2], self.distal1[:][:][2], self.distal2[:][:][2], self.distal3[:][:][2],
+                   self.unwantedCollisionFlag, self.failFlag,
+                   self.payloadOrientation, self.payloadVelocity, self.payloadAcceleration,
+                   tasks
+                   ]
+        entryName = "TestEntry.npy"
+        fileName = "Dataset/" + entryName
+        np.save(fileName, dataset)
+        
+
+
         
         
         

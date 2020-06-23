@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import numpy
 
 
 class Grasping:
@@ -189,6 +190,13 @@ class Grasping:
         forces[4] = self.client.getJointState(self.ArmId, 44)[2][index]
         forces[5] = self.client.getJointState(self.ArmId, 46)[2][index]
         return forces
+        
+    def readPayloadState(self):
+        linkState = self.client.getLinkState(self.ArmId,60, 1,1)
+        linkWorldPosition = linkState[0]
+        linkWorldOrientation = linkState[1]
+        worldLinkLinearVelocity = linkState[6]
+        return linkWorldOrientation, worldLinkLinearVelocity
         
         
         

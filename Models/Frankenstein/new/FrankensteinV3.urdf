@@ -917,12 +917,6 @@
   <!-- ################ THIS SECTION LINKS THE MARKERS (TACTILE DATA) TO THE CAD MESH ################ -->
   <!-- ################ COPY AND PASTE THIS FROM urdf/homemade_marker_portion_urdf  ################ -->
   <!-- ################ ################ ################ ################ ################ ################ -->
-  <joint name="base_tactile_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0"/>
-    <parent link="base_link"/>
-    <child link="base_tactile"/>
-  </joint>
-  <link name="base_tactile"/>
   <link name="proximal_1_tactile">
     <!-- Mabel: Added nonzero mass so link doesn't disappear in SDF -->
     <inertial>
