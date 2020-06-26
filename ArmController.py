@@ -43,6 +43,7 @@ class ArmController:
         if i == 0:
             self.taskCounter = 0
         #print(self.taskCounter)
+        #print(tasks[self.taskCounter][0])
         if i > tasks[self.taskCounter][0]: #is it after the start step of current task
             if len(tasks)-1 > self.taskCounter: 
                 if i == tasks[self.taskCounter + 1][0]:
@@ -84,8 +85,8 @@ class ArmController:
         self.IKiteration([0.5,0.3,0.5], self.client.getQuaternionFromEuler([1.57,0,0]), i, 0,500)
         self.IKiteration([0.7,0.3,0.3], self.client.getQuaternionFromEuler([1.57,0,0]), i, 500,1000)
         self.IKiteration([0.5,0.2,0.3], self.client.getQuaternionFromEuler([1.57,0,0]), i, 1000,1500)
-        self.IKiteration([0.5,0.1,0.3], self.client.getQuaternionFromEuler([1.57,0,0]), i, 1500,2000)
-        self.IKiteration([0.5,0,0.3], self.client.getQuaternionFromEuler([1.57,0,0]), i, 2000,2500)
+        self.IKiteration([0.5,0.1,0.15], self.client.getQuaternionFromEuler([1.57,0,0]), i, 1500,2000)
+        self.IKiteration([0.5,0,0.15], self.client.getQuaternionFromEuler([1.57,0,0]), i, 2000,2500)
         if i == 2500:
             self.frankaJointsLock()
         if i > 2500 and i < 6000:
@@ -93,6 +94,7 @@ class ArmController:
             G.spreadFingers(0)
         if i > 6050:
             G.closeHandTorques()
+        self.IKiteration([0.5,0,0.5], self.client.getQuaternionFromEuler([1.57,0,0]), i, 6100,6400)
         
     
     

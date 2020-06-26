@@ -17,7 +17,9 @@
       <geometry>
         <cylinder radius="0.02" length="0.2" />
       </geometry>
-      <material name="black"/>
+      <material name="">
+        <color rgba="0.0 0.0 0.1 1"/>
+      </material>
     </visual>
     
     <inertial>

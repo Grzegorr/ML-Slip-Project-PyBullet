@@ -569,7 +569,6 @@
       </geometry>
       <material name="">
         <color rgba="0.6 0.0 0.0 1"/>
-        <!--    <color rgba="0.686 0.0706 0.8039 1"/> -->
       </material>
     </visual>
     <!-- Mabel -->
@@ -913,10 +912,7 @@
     <child link="distal_pad_3"/>
     <axis xyz="0 0 0"/>
   </joint>
-  <!-- ################ ################ ################ ################ ################ ################ -->
-  <!-- ################ THIS SECTION LINKS THE MARKERS (TACTILE DATA) TO THE CAD MESH ################ -->
-  <!-- ################ COPY AND PASTE THIS FROM urdf/homemade_marker_portion_urdf  ################ -->
-  <!-- ################ ################ ################ ################ ################ ################ -->
+
   <link name="proximal_1_tactile">
     <!-- Mabel: Added nonzero mass so link doesn't disappear in SDF -->
     <inertial>
@@ -924,16 +920,6 @@
       <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001"/>
     </inertial>
   </link>
-  <!-- Mabel: Defining as explicit revolute, with 0 limits, so child link shows
-    up explicitly in SDF. Original all _tactile_joint's were type fixed.
-    But defining as revolute means someone (hand_visualizer.cpp) needs to
-    publish the joint values of these joints to /joint_states, otherwise
-    they will not have a tf!!!
-    Changing back to fixed type. `.` I don't know if I need them to be
-    revolute. Why did I want them to show up in sdf anyway? Probably just
-    for debugging when I was still developing this file to be Gazebo-legal!
-    Probably don't need these to be revolute. -->
-  <!--joint name="proximal_1_tactile_joint" type="revolute"-->
   <joint name="proximal_1_tactile_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="proximal_1"/>
@@ -984,12 +970,7 @@
       <inertia ixx="0.000000001" ixy="0.0" ixz="0.0" iyy="0.000000001" iyz="0.0" izz="0.000000001"/>
     </inertial>
   </link>
-  <!-- 24 Jan 2017: Why isn't this revolute??? Did I just forget about it?? TODO
-    That is why in rosrun tf view_frames frames.pdf, distal_2 and distal_3 have
-    children distal_2_tactile and distal_3_tactile, but distal_1 doesn't!!!!
-    The fixed type joints are directly taken as joint values. But the revolute
-    type joints require a publisher for the joint values onto /joint_states,
-    which is hand_visualizer_sim.cpp's job. -->
+
   <joint name="distal_2_tactile_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="distal_2"/>

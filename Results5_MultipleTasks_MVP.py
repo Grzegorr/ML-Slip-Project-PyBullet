@@ -33,8 +33,8 @@ def allStatsHandling():
     S.readPayloadState(i,linkWorldOrientation, worldLinkLinearVelocity)
     if i == 23999:
         S.computeAcceleration("False")
-        S.printFlags("True")
-        S.datasetEntryPrepareAndSave(task)
+        S.printFlags("False")
+        S.datasetEntryPrepareAndSave(task, iteration)
         
 def unwantedCollisionFlag():
     contactPoints = p.getContactPoints()
@@ -53,6 +53,7 @@ def unwantedCollisionFlag():
                     return 1
             
     return 0
+    
 
 #Can be done by detecting closed fingers probably
 def graspFailFlag():
@@ -76,7 +77,7 @@ def graspFailFlag():
 # ]
         
         
-task = np.load("Tasks/PGTtest256.npy", allow_pickle = True)     
+task = np.load("Tasks/PGTtest0.npy", allow_pickle = True)     
 #task = np.load("Tasks/ArmHitFloor.npy", allow_pickle = True)         
 #task = np.load("Tasks/ArmHitTable.npy", allow_pickle = True)        
 #task = np.load("Tasks/PayloadHitTable.npy", allow_pickle = True)      
@@ -85,7 +86,8 @@ task = np.load("Tasks/PGTtest256.npy", allow_pickle = True)
     
     
 #Connet to the API
-physicsClient = p.connect(p.GUI)
+#physicsClient = p.connect(p.GUI)
+physicsClient = p.connect(p.DIRECT)
 
 #Path to defaultyly downloaded data
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -101,28 +103,29 @@ cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
 #TheArm = p.loadURDF("Models/Frankenstein/FrankensteinV2.urdf",cubeStartPos, cubeStartOrientation,useFixedBase = 1)
 TheArm = p.loadURDF("Models/Frankenstein/new/FrankensteinV3.urdf",cubeStartPos, cubeStartOrientation, useFixedBase = 1)
 
-cubeStartPos = [0.5,0,0]
+cubeStartPos = [0.5,0,-0.1]
 cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
 table = p.loadURDF("Models/PhysicsTesting/table.urdf",cubeStartPos, cubeStartOrientation, useFixedBase = 1)
 
 
-cubeStartPos = [0.5,0,0.27]
+cubeStartPos = [0.5,0,0.17]
 cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
 payload = p.loadURDF("Models/PhysicsTesting/cylinder.urdf",cubeStartPos, cubeStartOrientation)
 
     
 #Grasping class
 G = Grasp(p,TheArm)
-I = Interface.Interface()
+#I = Interface.Interface()
 AC = ArmController(p,TheArm)
 S = Stats()
 G.lockSpreadFingersJoints()
-
+i = 0
+iteration = 0
 
 #Run the simulation
-for i in range (0,24000):
-    if i % 100 == 0:
-        print("Step" + str(i))
+while(i in range (0,24000)):
+    if i % 1000 == 0:
+        print("Iteration: " + str(iteration) + ", Step: " + str(i))
         
     AC.GrabbingSequence(i,0,G)
     AC.runSeriesOfIKTasks(i,task)
@@ -132,6 +135,35 @@ for i in range (0,24000):
     #if i > 30:
         #time.sleep(1./240.)
         #time.sleep(1./40.)
+    if i == 23999:   
+        p.resetSimulation()
+        #Setting the gravity
+        p.setGravity(0,0,-10)
+        
+        #Load-in a plane
+        planeId = p.loadURDF("plane.urdf")
+        
+        cubeStartPos = [0,0,0]
+        cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
+        #TheArm = p.loadURDF("Models/Frankenstein/FrankensteinV2.urdf",cubeStartPos, cubeStartOrientation,useFixedBase = 1)
+        TheArm = p.loadURDF("Models/Frankenstein/new/FrankensteinV3.urdf",cubeStartPos, cubeStartOrientation, useFixedBase = 1)
+        
+        cubeStartPos = [0.5,0,-0.1]
+        cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
+        table = p.loadURDF("Models/PhysicsTesting/table.urdf",cubeStartPos, cubeStartOrientation, useFixedBase = 1)
+        
+        
+        cubeStartPos = [0.5,0,0.17]
+        cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
+        payload = p.loadURDF("Models/PhysicsTesting/cylinder.urdf",cubeStartPos, cubeStartOrientation)
+        i = -1
+        iteration = iteration + 1
+        task = np.load("Tasks/PGTtest" + str(iteration) + ".npy", allow_pickle = True) 
+        
+        
+        
+        
+    i = i + 1
 
         
         

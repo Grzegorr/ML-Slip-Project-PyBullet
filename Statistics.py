@@ -100,8 +100,8 @@ class Statistics:
         if ifPrint != "True":
             return
         plt.figure(2)
-        plt.plot(self.unwantedCollisionFlag[:], label = "Unwanted Collision Flag")
-        plt.plot(self.failFlag[:], label = "Grasp Failure Flag")
+        plt.plot(self.unwantedCollisionFlag[6000:], label = "Unwanted Collision Flag")
+        plt.plot(self.failFlag[6000:], label = "Grasp Failure Flag")
         plt.legend(bbox_to_anchor=(0, 1), loc='lower left', ncol = 2)
         plt.show()
             
@@ -122,14 +122,23 @@ class Statistics:
         plt.legend(bbox_to_anchor=(0, 1), loc='lower left', ncol = 3)
         plt.show()
         
-    def datasetEntryPrepareAndSave(self, tasks):
+    def datasetEntryPrepareAndSave(self, tasks,iteration):
+        #check if the run was valid, eg. no grasp failure caused by 
+        graspIndex = np.where(self.failFlag==1)
+        #print(graspIndex[0])
+        collisionIndex = np.where(self.unwantedCollisionFlag==1)
+        if graspIndex[0][0]>collisionIndex[0][0]:
+            ifValid = 0
+        else:
+            ifValid = 1
+        #print(graspIndex)
         #line 1 - tactile info, line 2 - flags, line 3 - payload physics, line 4 - tasks, 
         dataset = [self.proximal1[:][:][2], self.proximal2[:][:][2], self.proximal3[:][:][2], self.distal1[:][:][2], self.distal2[:][:][2], self.distal3[:][:][2],
                    self.unwantedCollisionFlag, self.failFlag,
                    self.payloadOrientation, self.payloadVelocity, self.payloadAcceleration,
-                   tasks
+                   tasks, ifValid
                    ]
-        entryName = "TestEntry.npy"
+        entryName = "TestEntry" + str(iteration) + ".npy"
         fileName = "Dataset/" + entryName
         np.save(fileName, dataset)
         
