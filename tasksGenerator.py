@@ -12,11 +12,17 @@ import random
 #[startStep, position, orientation, targetVelocity, maxVelocity, velocityGain, positionGaing]
 
 def testTasksGenerate():
+    task = [ [ 6500, [0.5,0,0.6], p.getQuaternionFromEuler([0,0,0]), 0, 0.1, 0.1, 0.1 ]
+            ]
+    entryName = "Calibration.npy"
+    fileName = "Tasks/" + entryName
+    np.save(fileName, task)
+    
     task = [ [ 6500, [0.5,0,0.6], p.getQuaternionFromEuler([1.57,0,0]), 0, 1, 1, 1 ],
               [ 7000, [0.5,0.5,0.6], p.getQuaternionFromEuler([1.57,0,0]), 1, 1, 1, 1 ],
               [ 7500, [0.5,0.5,0.6], p.getQuaternionFromEuler([-1.57,0,0]), 1, 1, 1, 1 ],
-              [ 8000, [0.3,0.3,0.3], p.getQuaternionFromEuler([-1.57,0,0]), 1, 1, 1, 1 ],
-              [ 8500, [0.5,0.5,0.6], p.getQuaternionFromEuler([1.57,0,0]), 1, 1, 1, 1 ]
+              [ 8000, [0.3,0.3,0.3], p.getQuaternionFromEuler([1.57,0,0]), 1, 1, 1, 1 ],
+              [ 8500, [0.5,0.5,0.6], p.getQuaternionFromEuler([0,0,0]), 1, 1, 1, 1 ]
             ]
     entryName = "ArmHitTable.npy"
     fileName = "Tasks/" + entryName

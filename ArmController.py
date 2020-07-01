@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import numpy as np
 
 class ArmController:
+    lowerlimits = [-2.9671,-1.7628,-2.8973,-3.0718,-2.8973,-0.0175,-2.8973,100,100,100,100,100,100,100,100]
+    upperlimits = [2.9671,1.7628,2.8973,0,2.8973,3.7525,2.8973,-110,-110,-110,-110,-110,-110,-110,-110]
+    ranges = np.subtract(upperlimits, lowerlimits)
+    restPoses = [0,0,0,0,0,0,0.8,0,0,0,0,0,0,0,0]
+    
+    
     
     def __init__(self, bulletClient, ArmId):
         print("Arm Controller initialized")
+        print(self.ranges)
         self.client = bulletClient
         self.ArmId = ArmId
         
@@ -37,8 +45,17 @@ class ArmController:
             jointPoses = self.client.calculateInverseKinematics(self.ArmId, 60, position, targetOrientation = Orientation)
             for i in range(len(jointPoses)):
                 self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=i, controlMode=self.client.POSITION_CONTROL, targetPosition=jointPoses[i], targetVelocity=targetVelocity, force=5000, maxVelocity = maxVel, velocityGain = Vgain, positionGain = Pgain )
-            
+      
+    
+    def IKiterationAuto2(self, position, Orientation,simStep, startStep, stopStep, targetVelocity, maxVel, Vgain, Pgain):
+         if simStep > startStep and simStep < stopStep:
+            jointPoses = self.client.calculateInverseKinematics(self.ArmId, 60, position, targetOrientation = Orientation)
+            for i in range(len(jointPoses)):
+                self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=i, controlMode=self.client.POSITION_CONTROL, targetPosition=jointPoses[i], targetVelocity=targetVelocity, force=5000, maxVelocity = maxVel, velocityGain = Vgain, positionGain = Pgain )
+    
+        
     def runSeriesOfIKTasks(self,i,tasks):
+        #print("Run series of tasks")
     #tasks[x]= [simStepStart, positionEndEffector, orientationEndEffector, targetVel,maxVel, Vgain, Pgain]
         if i == 0:
             self.taskCounter = 0
@@ -48,9 +65,14 @@ class ArmController:
             if len(tasks)-1 > self.taskCounter: 
                 if i == tasks[self.taskCounter + 1][0]:
                     self.taskCounter = self.taskCounter + 1
-            jointPoses = self.client.calculateInverseKinematics(self.ArmId, 60, tasks[self.taskCounter][1], targetOrientation = tasks[self.taskCounter][2])
-            for j in range(len(jointPoses)):
-                self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=j, controlMode=self.client.POSITION_CONTROL, targetPosition=jointPoses[j], targetVelocity=tasks[self.taskCounter][3], force=5000, maxVelocity = tasks[self.taskCounter][4], velocityGain = tasks[self.taskCounter][5], positionGain = tasks[self.taskCounter][6] )
+            #print("before IK")
+            if i % 10 == 0:
+                jointPoses = self.client.calculateInverseKinematics(self.ArmId, 60, tasks[self.taskCounter][1], targetOrientation = tasks[self.taskCounter][2])#, lowerLimits = self.lowerlimits, upperLimits = self.upperlimits, jointRanges = self.ranges, restPoses = self.restPoses)
+            #print("after IK")
+            #print(jointPoses)
+            #print(len(jointPoses))
+                for j in range(7):
+                    self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=j, controlMode=self.client.POSITION_CONTROL, targetPosition=jointPoses[j], targetVelocity=tasks[self.taskCounter][3], force=5000, maxVelocity = tasks[self.taskCounter][4], velocityGain = tasks[self.taskCounter][5], positionGain = tasks[self.taskCounter][6] )
             
             
     def accurateCalculateInverseKinematics(kukaId, endEffectorId, targetPos, threshold, maxIter):

@@ -192,7 +192,7 @@ class Grasping:
         return forces
         
     def readPayloadState(self):
-        linkState = self.client.getLinkState(self.ArmId,60, 1,1)
+        linkState = self.client.getLinkState(self.ArmId,60, 1,1) #This is in cartesian world coordinates
         linkWorldPosition = linkState[0]
         linkWorldOrientation = linkState[1]
         worldLinkLinearVelocity = linkState[6]

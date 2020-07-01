@@ -85,9 +85,9 @@ class Statistics:
     #After simulation is finished, takes velocities and computes acceleration    
     def computeAcceleration(self,ifPrint):
         for x in range(1,len(self.payloadVelocity)):
+            self.payloadAcceleration[x][0] = (self.payloadVelocity[x][0]-self.payloadVelocity[int(x-1)][0])*240.0
             self.payloadAcceleration[x][1] = (self.payloadVelocity[x][1]-self.payloadVelocity[int(x-1)][1])*240.0
             self.payloadAcceleration[x][2] = (self.payloadVelocity[x][2]-self.payloadVelocity[int(x-1)][2])*240.0
-            self.payloadAcceleration[x][2] = (self.payloadVelocity[x][1]-self.payloadVelocity[int(x-1)][2])*240.0
         if ifPrint == "True":
             plt.figure(1)
             plt.plot(self.payloadAcceleration[:,0], label = "Load accelecration X")

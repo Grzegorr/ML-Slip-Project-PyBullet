@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
 import time
-
+from KlasaCina import KC
 
 
 def allStatsHandling():
@@ -77,7 +77,8 @@ def graspFailFlag():
 # ]
         
         
-task = np.load("Tasks/PGTtest0.npy", allow_pickle = True)     
+#task = np.load("Tasks/PGTtest0.npy", allow_pickle = True)     
+task = np.load("Tasks/Calibration.npy", allow_pickle = True)  
 #task = np.load("Tasks/ArmHitFloor.npy", allow_pickle = True)         
 #task = np.load("Tasks/ArmHitTable.npy", allow_pickle = True)        
 #task = np.load("Tasks/PayloadHitTable.npy", allow_pickle = True)      
@@ -86,14 +87,14 @@ task = np.load("Tasks/PGTtest0.npy", allow_pickle = True)
     
     
 #Connet to the API
-#physicsClient = p.connect(p.GUI)
-physicsClient = p.connect(p.DIRECT)
+physicsClient = p.connect(p.GUI)
+#physicsClient = p.connect(p.DIRECT)
 
 #Path to defaultyly downloaded data
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 #Setting the gravity
-p.setGravity(0,0,-10)
+p.setGravity(0,0,-9.81)
 
 #Load-in a plane
 planeId = p.loadURDF("plane.urdf")
@@ -119,6 +120,7 @@ G = Grasp(p,TheArm)
 AC = ArmController(p,TheArm)
 S = Stats()
 G.lockSpreadFingersJoints()
+czas = KC()
 i = 0
 iteration = 0
 
@@ -138,7 +140,7 @@ while(i in range (0,24000)):
     if i == 23999:   
         p.resetSimulation()
         #Setting the gravity
-        p.setGravity(0,0,-10)
+        p.setGravity(0,0,-9.81)
         
         #Load-in a plane
         planeId = p.loadURDF("plane.urdf")
@@ -159,6 +161,8 @@ while(i in range (0,24000)):
         i = -1
         iteration = iteration + 1
         task = np.load("Tasks/PGTtest" + str(iteration) + ".npy", allow_pickle = True) 
+        
+        czas.dlugosc()
         
         
         
