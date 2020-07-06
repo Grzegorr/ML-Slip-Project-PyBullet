@@ -64,15 +64,22 @@ def testTasksGenerate():
 def autoTaskGenerator(genTaskConter):
     #task = [startStep, position, orientation, targetVelocity, maxVelocity, velocityGain, positionGaing]
     firstStartStep = 6500
+    previousPos = [0.5,0,0.5]
     #boundries = [timeDifference,position, orientation,]
-    boundries = [ [100,1000], [[-0.6, -0.6, 0.4],[0.6 ,0.6, 1.2]], [[-3.14, -3.14, -3.14],[3.14, 3.14, 3.14]], [0,2], [0,2], [0,2], [0,2] ] 
+    boundries = [ [100,1000], [[-0.1, -0.1, -0.1],[0.1 ,0.1, 0.1]], [[-3.14, -3.14, -3.14],[3.14, 3.14, 3.14]], [0,0.5], [0,0.5], [0,0.5], [0,0.5] ] 
     task = []
     startTime = firstStartStep
     while(1):
         #randomly generated changes
         timeChange = boundries[0][0] + random.random() * ( boundries[0][1] - boundries[0][0])
         startTime = int(startTime + timeChange)
-        position = [random.random() * ( boundries[1][1][0] - boundries[1][0][0]), random.random() * ( boundries[1][1][1] - boundries[1][0][1]), random.random() * ( boundries[1][1][2] - boundries[1][0][2]) ]
+        positionChange = [random.random() * ( boundries[1][1][0] - boundries[1][0][0]), random.random() * ( boundries[1][1][1] - boundries[1][0][1]), random.random() * ( boundries[1][1][2] - boundries[1][0][2]) ]
+        position = np.array(previousPos) + np.array(positionChange)
+        evaluatePos = position[0] >-0.7 and position[0] <0.7 and position[1] >-0.7 and position[1] <0.7 and position[2] >0.3 and position[2] <1.2 
+        while(evaluatePos == 0):
+            positionChange = [random.random() * ( boundries[1][1][0] - boundries[1][0][0]), random.random() * ( boundries[1][1][1] - boundries[1][0][1]), random.random() * ( boundries[1][1][2] - boundries[1][0][2]) ]
+            position = np.array(previousPos) + np.array(positionChange)
+            evaluatePos = position[0] >-0.7 and position[0] <0.7 and position[1] >-0.7 and position[1] <0.7 and position[2] >0.3 and position[2] <1.2 
         orientation = p.getQuaternionFromEuler([random.random() * ( boundries[2][1][0] - boundries[2][0][0]), random.random() * ( boundries[2][1][1] - boundries[2][0][1]), random.random() * ( boundries[2][1][2] - boundries[2][0][2]) ])
         tagetVelocity = random.random() * ( boundries[3][1] - boundries[3][0])
         maxVelocity = random.random() * ( boundries[4][1] - boundries[4][0])
@@ -83,10 +90,12 @@ def autoTaskGenerator(genTaskConter):
             entryName = "PGTtest" + str(genTaskConter) + ".npy"
             fileName = "Tasks/" + entryName
             np.save(fileName, task)
+        
             break
         waypoint = [startTime, position, orientation, tagetVelocity, maxVelocity, velocityGain, positionGain]
         task.append(waypoint)
-    #print(task)
+    print(task[1])
+    print()
     
 def multipleRandomTaskGenerator(noOfTasks):
     for x in range(noOfTasks):
@@ -95,7 +104,7 @@ def multipleRandomTaskGenerator(noOfTasks):
         
 
 
-multipleRandomTaskGenerator(1000)
+multipleRandomTaskGenerator(2000)
 testTasksGenerate()
 
 

@@ -77,8 +77,8 @@ def graspFailFlag():
 # ]
         
         
-#task = np.load("Tasks/PGTtest0.npy", allow_pickle = True)     
-task = np.load("Tasks/Calibration.npy", allow_pickle = True)  
+task = np.load("Tasks/PGTtest0.npy", allow_pickle = True)     
+#task = np.load("Tasks/Calibration.npy", allow_pickle = True)  
 #task = np.load("Tasks/ArmHitFloor.npy", allow_pickle = True)         
 #task = np.load("Tasks/ArmHitTable.npy", allow_pickle = True)        
 #task = np.load("Tasks/PayloadHitTable.npy", allow_pickle = True)      

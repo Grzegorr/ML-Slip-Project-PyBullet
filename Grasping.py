@@ -25,8 +25,8 @@ class Grasping:
             self.client.enableJointForceTorqueSensor(bodyUniqueId=self.ArmId, jointIndex=sensor_joint)
     
     def closeHandTorques(self):
-        force1 = 2
-        force2 = 1
+        force1 = 0.5
+        force2 = 0.25
         #print("Closing Hand")
         self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=11, controlMode=self.client.VELOCITY_CONTROL, force = 0)
         self.client.setJointMotorControl2(bodyUniqueId=self.ArmId, jointIndex=11, controlMode=self.client.TORQUE_CONTROL, force = force1)  

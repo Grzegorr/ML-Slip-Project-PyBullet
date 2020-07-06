@@ -38,7 +38,7 @@ class ArmController:
         if simStep > startStep and simStep < stopStep:
             jointPoses = self.client.calculateInverseKinematics(self.ArmId, 60, position, targetOrientation = Orientation)
             for i in range(len(jointPoses)):
-                self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=i, controlMode=self.client.POSITION_CONTROL, targetPosition=jointPoses[i], targetVelocity=0, force=5000, maxVelocity = 1)
+                self.client.setJointMotorControl2(bodyIndex=self.ArmId, jointIndex=i, controlMode=self.client.POSITION_CONTROL, targetPosition=jointPoses[i], targetVelocity=0, force=5000, maxVelocity = 1,velocityGain = 0.2, positionGain = 0.1)
             
     def IKiterationAuto(self, position, Orientation,simStep, startStep, stopStep, targetVelocity, maxVel, Vgain, Pgain):
          if simStep > startStep and simStep < stopStep:
