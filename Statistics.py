@@ -127,7 +127,9 @@ class Statistics:
         graspIndex = np.where(self.failFlag==1)
         #print(graspIndex[0])
         collisionIndex = np.where(self.unwantedCollisionFlag==1)
-        if graspIndex[0][0]>collisionIndex[0][0]:
+        if len(np.where(self.failFlag == 1)[0]) == 0 or len(np.where(self.unwantedCollisionFlag==1)[0]):
+            ifValid = 1
+        elif graspIndex[0][0]>collisionIndex[0][0]:
             ifValid = 0
         else:
             ifValid = 1
