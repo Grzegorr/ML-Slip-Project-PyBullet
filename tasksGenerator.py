@@ -92,10 +92,11 @@ def autoTaskGenerator(genTaskConter):
             np.save(fileName, task)
         
             break
+        
         waypoint = [startTime, position, orientation, tagetVelocity, maxVelocity, velocityGain, positionGain]
         task.append(waypoint)
-    print(task[1])
-    print()
+    #print(task[1])
+    #print()
     
 def multipleRandomTaskGenerator(noOfTasks):
     for x in range(noOfTasks):
