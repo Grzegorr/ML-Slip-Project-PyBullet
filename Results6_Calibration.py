@@ -5,7 +5,7 @@ import time
 import pybullet_data
 import pybullet_robots.panda.panda_sim as panda_sim
 from Grasping import Grasping as Grasp
-import Interface
+#import Interface
 from ArmController import ArmController
 from Statistics import Statistics as Stats
 import matplotlib.pyplot as plt
@@ -87,7 +87,9 @@ for theta_seed in range(36):
         
         cubeStartPos = [0.5,0,0.17]
         cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
-        payload = p.loadURDF("Models/PhysicsTesting/cylinder.urdf",cubeStartPos, cubeStartOrientation)
+        #payload = p.loadURDF("Models/PhysicsTesting/cylinder.urdf",cubeStartPos, cubeStartOrientation)
+        #payload = p.loadURDF("Models/PhysicsTesting/cylinder2.urdf",cubeStartPos, cubeStartOrientation)
+        payload = p.loadURDF("Models/PhysicsTesting/cylinder3.urdf",cubeStartPos, cubeStartOrientation)
         
         #Grasping class
         G = Grasp(p,TheArm)

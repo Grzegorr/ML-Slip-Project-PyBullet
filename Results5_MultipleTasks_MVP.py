@@ -5,7 +5,7 @@ import time
 import pybullet_data
 import pybullet_robots.panda.panda_sim as panda_sim
 from Grasping import Grasping as Grasp
-import Interface
+#import Interface
 from ArmController import ArmController
 from Statistics import Statistics as Stats
 import matplotlib.pyplot as plt
@@ -87,8 +87,8 @@ task = np.load("Tasks/PGTtest0.npy", allow_pickle = True)
     
     
 #Connet to the API
-physicsClient = p.connect(p.GUI)
-#physicsClient = p.connect(p.DIRECT)
+#physicsClient = p.connect(p.GUI)
+physicsClient = p.connect(p.DIRECT)
 
 #Path to defaultyly downloaded data
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
