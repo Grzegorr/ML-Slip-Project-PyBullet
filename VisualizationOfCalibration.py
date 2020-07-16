@@ -83,7 +83,17 @@ def facingEdge():
     plt.title("Facing Edge Circle")
     plt.show()
     fig.savefig('FacingEdgeAccl_' + calOutputName + '.png')
-    
+  
+  
+calOutputName = "Calibration_cylinder"
+horizontal()
+facingFlat()
+facingEdge()
+calOutputName = "Calibration_cylinder2"
+horizontal()
+facingFlat()
+facingEdge()
+calOutputName = "Calibration_cylinder3"
 horizontal()
 facingFlat()
 facingEdge()

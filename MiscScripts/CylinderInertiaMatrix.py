@@ -12,5 +12,10 @@ def inertialTensorOfCylinder(M,h,r):
     print("ixx=\""+ str(ixx) + "\" ixy=\"0\" ixz=\"0\" iyy=\"" + str(iyy) + "\" iyz=\"0\" izz=\"" + str(izz) + "\"")
     
 
+print("Cylinder")
 inertialTensorOfCylinder(0.5, 0.2, 0.02)    
+print("Cylinder2")
+inertialTensorOfCylinder(0.2, 0.2, 0.02)   
+print("Cylinder3")
+inertialTensorOfCylinder(1.0, 0.2, 0.02)   
     

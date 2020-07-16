@@ -53,8 +53,8 @@ def PolarToCartesian(vec):
 
 failFlag = np.zeros(24000)
 
-#physicsClient = p.connect(p.GUI)
-physicsClient = p.connect(p.DIRECT)
+physicsClient = p.connect(p.GUI)
+#physicsClient = p.connect(p.DIRECT)
 
 calibrationOutput = np.zeros((36,18))
 
@@ -87,9 +87,9 @@ for theta_seed in range(36):
         
         cubeStartPos = [0.5,0,0.17]
         cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
-        #payload = p.loadURDF("Models/PhysicsTesting/cylinder.urdf",cubeStartPos, cubeStartOrientation)
+        payload = p.loadURDF("Models/PhysicsTesting/cylinder.urdf",cubeStartPos, cubeStartOrientation)
         #payload = p.loadURDF("Models/PhysicsTesting/cylinder2.urdf",cubeStartPos, cubeStartOrientation)
-        payload = p.loadURDF("Models/PhysicsTesting/cylinder3.urdf",cubeStartPos, cubeStartOrientation)
+        #payload = p.loadURDF("Models/PhysicsTesting/cylinder3.urdf",cubeStartPos, cubeStartOrientation)
         
         #Grasping class
         G = Grasp(p,TheArm)
@@ -131,7 +131,7 @@ for theta_seed in range(36):
             p.stepSimulation()   
             i = i + 1
 
-entryName = "Calibration2.npy"
+entryName = "Calibration2_1.npy"
 fileName = "Calibration/" + entryName
 np.save(fileName, calibrationOutput)
         
