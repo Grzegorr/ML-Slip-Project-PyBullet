@@ -87,7 +87,8 @@ for theta_seed in range(36):
         
         cubeStartPos = [0.5,0,0.17]
         cubeStartOrientation = p.getQuaternionFromEuler([0,0,0])
-        payload = p.loadURDF("Models/PhysicsTesting/cylinder.urdf",cubeStartPos, cubeStartOrientation)
+        payload = p.loadURDF("Models/PhysicsTesting/cylinder_weightless.urdf",cubeStartPos, cubeStartOrientation)
+        #payload = p.loadURDF("Models/PhysicsTesting/cylinder.urdf",cubeStartPos, cubeStartOrientation)
         #payload = p.loadURDF("Models/PhysicsTesting/cylinder2.urdf",cubeStartPos, cubeStartOrientation)
         #payload = p.loadURDF("Models/PhysicsTesting/cylinder3.urdf",cubeStartPos, cubeStartOrientation)
         
@@ -106,7 +107,7 @@ for theta_seed in range(36):
                 print("Iteration: " + str(iteration) + ", Step: " + str(i))
                 
             #Setting direction and increaring gravity    
-            if i % 100 == 0 and i > 10000: 
+            if i % 10 == 0 and i > 10000: 
                 r = 0.05*(i-10000)
                 gravity = PolarToCartesian([r,10* theta_seed, 10* phi_seed])
                 p.setGravity(gravity[0], gravity[1], gravity[2])
@@ -131,7 +132,7 @@ for theta_seed in range(36):
             p.stepSimulation()   
             i = i + 1
 
-entryName = "Calibration2_1.npy"
+entryName = "Calibration_weightless.npy"
 fileName = "Calibration/" + entryName
 np.save(fileName, calibrationOutput)
         
