@@ -71,7 +71,7 @@ def autoTaskGenerator(genTaskConter):
     startTime = firstStartStep
     while(1):
         #randomly generated changes
-        timeChange = boundries[0][0] + random.random() * ( boundries[0][1] - boundries[0][0])
+        timeChange = 500
         startTime = int(startTime + timeChange)
         positionChange = [random.random() * ( boundries[1][1][0] - boundries[1][0][0]), random.random() * ( boundries[1][1][1] - boundries[1][0][1]), random.random() * ( boundries[1][1][2] - boundries[1][0][2]) ]
         position = np.array(previousPos) + np.array(positionChange)
@@ -97,6 +97,7 @@ def autoTaskGenerator(genTaskConter):
         task.append(waypoint)
     #print(task[1])
     #print()
+    #print(len(task))
     
 def multipleRandomTaskGenerator(noOfTasks):
     for x in range(noOfTasks):

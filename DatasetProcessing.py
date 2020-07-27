@@ -45,12 +45,30 @@ def inverseRPYrotation(vec,RPY):
         [sin(-RPY[2]), cos(-RPY[2]), 0],
         [0, 0, 1]
         ]
+    # sign @ is a matrix multiplication
     vector = np.transpose(vec)
     result = Rx @ vector
     result = Ry @ result
     result = Rz @ result
     #print(result)
     return result
+
+#Returns [theta, phi, r]
+def CartesianToSpherical10deg(vec):
+    theta = atan2(vec[1],vec[0])
+    phi = atan2(((vec[0]*vec[0] + vec[1]*vec[1])**0.5),vec[2])
+    r = (vec[0]*vec[0] + vec[1]*vec[1] + vec[2]*vec[2])**0.5
+    # go to degrees
+    theta = theta/3.14*180
+    phi = phi/3.14*180
+    #now take care of resolution
+    theta = int(int((theta+5))/int(10))
+    phi = int(int((phi+5))/int(10))
+    force = [theta, phi, r]
+    #print(force)
+    return force
+    
+    
     
     
     
@@ -58,8 +76,9 @@ def inverseRPYrotation(vec,RPY):
 gravity = [0, 0, -9.81]
 
 
-for iteration in range(1):
+for iteration in range(2):
     datasetEntry = np.load("Dataset/TestEntry" + str(iteration) + ".npy", allow_pickle = True)
+    #print(datasetEntry)
     #total accelaration at each simulation step
     totalAcceleration = -datasetEntry[10][:] + gravity #world frame of reference
     #print(totalAcceleration[7070] - datasetEntry[10][7070])
@@ -68,26 +87,34 @@ for iteration in range(1):
     for q in range(24000):
         forceInGraspFOR[q] = inverseRPYrotation(totalAcceleration[q],p.getEulerFromQuaternion(datasetEntry[8][q])) # args are total force in world frame, and orientation of end effector in world frame 
         #print(forceInGraspFOR[q])
+        #Now make the force in form that allows for choosing a threshold
+        forceInGraspFOR[q] = CartesianToSpherical10deg(forceInGraspFOR[q])
+    newData = [datasetEntry[0],datasetEntry[1],datasetEntry[2],datasetEntry[3],datasetEntry[4],datasetEntry[5],datasetEntry[6],datasetEntry[7],datasetEntry[8],datasetEntry[9],datasetEntry[10],datasetEntry[11],datasetEntry[12], forceInGraspFOR]
+    #print(newData)
+    entryName = "TestEntry" + str(iteration) + ".npy"
+    fileName = "ProcessedDataset/" + entryName
+    np.save(fileName, newData)
+        
     
-print("Payload Orientation")
-print(datasetEntry[8][18000:18100])
-print()
-print()    
-print("Payload Velocity")
-print(datasetEntry[9][18000:18100])
-print()
-print()  
-print("Payload Acceleration")
-print(datasetEntry[10][18000:18100])
-print()
-print()
-print("Total Acceleration")
-print(totalAcceleration[18000:18100])
-print()
-print()   
-print("Total Acceleration Grasp FOR") 
-print(forceInGraspFOR[18000:18100])
-#print(forceInGraspFOR[15000])
+#print("Payload Orientation")
+#print(datasetEntry[8][18000:18100])
+#print()
+#print()    
+#print("Payload Velocity")
+#print(datasetEntry[9][18000:18100])
+#print()
+#print()  
+#print("Payload Acceleration")
+#print(datasetEntry[10][18000:18100])
+#print()
+#print()
+#print("Total Acceleration")
+#print(totalAcceleration[18000:18100])
+#print()
+#print()   
+#print("Total Acceleration Grasp FOR") 
+#print(forceInGraspFOR[18000:18100])
+##print(forceInGraspFOR[15000])
 
 
 
