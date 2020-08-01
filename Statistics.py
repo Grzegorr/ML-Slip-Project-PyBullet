@@ -125,9 +125,10 @@ class Statistics:
     def datasetEntryPrepareAndSave(self, tasks,iteration):
         #check if the run was valid, eg. no grasp failure caused by 
         graspIndex = np.where(self.failFlag==1)
-        #print(graspIndex[0])
         collisionIndex = np.where(self.unwantedCollisionFlag==1)
-        if len(np.where(self.failFlag == 1)[0]) == 0 or len(np.where(self.unwantedCollisionFlag==1)[0]):
+        #print(graspIndex[0])
+        #print(collisionIndex[0])
+        if len(np.where(self.failFlag == 1)[0]) == 0 or len(np.where(self.unwantedCollisionFlag==1)[0]) == 0:
             ifValid = 1
         elif graspIndex[0][0]>collisionIndex[0][0]:
             ifValid = 0
