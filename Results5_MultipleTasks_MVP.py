@@ -122,7 +122,7 @@ S = Stats()
 G.lockSpreadFingersJoints()
 czas = KC()
 i = 0
-iteration = 1460
+iteration = 0
 logging = p.startStateLogging(p.STATE_LOGGING_VIDEO_MP4,"rec.MP4")
 
 #Run the simulation
