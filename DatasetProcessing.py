@@ -76,7 +76,7 @@ def CartesianToSpherical10deg(vec):
 gravity = [0, 0, -9.81]
 
 
-for iteration in range(2):
+for iteration in range(2000):
     datasetEntry = np.load("Dataset/TestEntry" + str(iteration) + ".npy", allow_pickle = True)
     #print(datasetEntry)
     #total accelaration at each simulation step
