@@ -62,8 +62,8 @@ def CartesianToSpherical10deg(vec):
     theta = theta/3.14*180
     phi = phi/3.14*180
     #now take care of resolution
-    theta = int(int((theta+5))/int(10))
-    phi = int(int((phi+5))/int(10))
+    theta = int(int((theta-5))/int(10))
+    phi = int(int((phi-5))/int(10))
     force = [theta, phi, r]
     #print(force)
     return force
@@ -74,26 +74,30 @@ def CartesianToSpherical10deg(vec):
     
 
 gravity = [0, 0, -9.81]
-
+fail_count = 0
 
 for iteration in range(2000):
     datasetEntry = np.load("Dataset/TestEntry" + str(iteration) + ".npy", allow_pickle = True)
     #print(datasetEntry)
+    #check for unwated collisions
+    if datasetEntry[12] == 1:
     #total accelaration at each simulation step
-    totalAcceleration = -datasetEntry[10][:] + gravity #world frame of reference
-    #print(totalAcceleration[7070] - datasetEntry[10][7070])
-    #print(datasetEntry[8][1:10])
-    forceInGraspFOR = np.zeros((24000,3))
-    for q in range(24000):
-        forceInGraspFOR[q] = inverseRPYrotation(totalAcceleration[q],p.getEulerFromQuaternion(datasetEntry[8][q])) # args are total force in world frame, and orientation of end effector in world frame 
-        #print(forceInGraspFOR[q])
-        #Now make the force in form that allows for choosing a threshold
-        forceInGraspFOR[q] = CartesianToSpherical10deg(forceInGraspFOR[q])
-    newData = [datasetEntry[0],datasetEntry[1],datasetEntry[2],datasetEntry[3],datasetEntry[4],datasetEntry[5],datasetEntry[6],datasetEntry[7],datasetEntry[8],datasetEntry[9],datasetEntry[10],datasetEntry[11],datasetEntry[12], forceInGraspFOR]
-    #print(newData)
-    entryName = "TestEntry" + str(iteration) + ".npy"
-    fileName = "ProcessedDataset/" + entryName
-    np.save(fileName, newData)
+        totalAcceleration = -datasetEntry[10][:] + gravity #world frame of reference
+        #print(totalAcceleration[7070] - datasetEntry[10][7070])
+        #print(datasetEntry[8][1:10])
+        forceInGraspFOR = np.zeros((24000,3))
+        for q in range(24000):
+            forceInGraspFOR[q] = inverseRPYrotation(totalAcceleration[q],p.getEulerFromQuaternion(datasetEntry[8][q])) # args are total force in world frame, and orientation of end effector in world frame 
+            #print(forceInGraspFOR[q])
+            #Now make the force in form that allows for choosing a threshold
+            forceInGraspFOR[q] = CartesianToSpherical10deg(forceInGraspFOR[q])
+        newData = [datasetEntry[0],datasetEntry[1],datasetEntry[2],datasetEntry[3],datasetEntry[4],datasetEntry[5],datasetEntry[6],datasetEntry[7],datasetEntry[8],datasetEntry[9],datasetEntry[10],datasetEntry[11],datasetEntry[12], forceInGraspFOR]
+        #print(newData)
+        entryName = "TestEntry" + str(iteration-fail_count) + ".npy"
+        fileName = "ProcessedDataset/" + entryName
+        np.save(fileName, newData)
+    else:
+        fail_count = fail_count + 1
         
     
 #print("Payload Orientation")

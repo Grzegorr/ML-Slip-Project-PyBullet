@@ -42,9 +42,13 @@ def physicalModelAcceleration(datasetEntry):
 def getThresholds(accelerations):
     thresholds = np.zeros(35)
     calibration = np.load("Calibration/Calibration_cylinder.npy", allow_pickle = True)
+    #print(len(calibration))
     for waypoint in range(35):
-        theta = int(accelerations[waypoint][0])
+        theta = int(accelerations[waypoint][0]) - 1
+        if theta < 0:
+            theta = theta + 36
         phi = int(accelerations[waypoint][1])
+        #print(phi)
         threshold = calibration[theta][phi]
         thresholds[waypoint] = threshold
     #print(thresholds)
@@ -124,12 +128,12 @@ y = y.tolist()
 
 model = Sequential()
 model.add(LSTM(64,return_sequences=True,input_shape = (35,11)))
-#model.add(LSTM(128,return_sequences=True))
-#model.add(LSTM(64,return_sequences=True))
+model.add(LSTM(128,return_sequences=True))
+model.add(LSTM(64,return_sequences=True))
 model.add(Dense(1))
 
 model.compile(optimizer='adam',loss='mse')
 history = model.fit(x, y,epochs=2000,batch_size=32,validation_data=(x, y))
 
-print(y)
-print(model.predict(x))
+print(y[0])
+print(model.predict(x)[0])
