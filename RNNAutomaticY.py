@@ -66,10 +66,19 @@ def groundTruth(thresholds,accelerations,failSignals):
         gt = gt/700.0#Normalization
         GT[waypoint] = gt
     return GT
-        
-        
-        
-        
+
+def prepareTactileData(dataEntry):
+    #print("New Data Entry:")
+    #print(dataEntry[0])
+    proximal1_1000 = datasetEntry[0]
+    proximal2_1000 = datasetEntry[1]
+    proximal3_1000 = datasetEntry[2]
+    distal1_1000 = datasetEntry[3]
+    distal2_1000 = datasetEntry[4]
+    distal3_1000 = datasetEntry[5]
+    
+    #indexes of tactile sensor reading just before the the start of next waypoint
+    
         
 
 ##That was first test inputs
@@ -92,13 +101,18 @@ def groundTruth(thresholds,accelerations,failSignals):
 #y_val = y_train
 #print(y_val)
 
-NoOfTrajectories = 20
+NoOfTrajectories = 1
 x = np.zeros((NoOfTrajectories,35,11))
 y = np.zeros((NoOfTrajectories,35))
 for trajectoryNo in range(NoOfTrajectories):
-    singleDatsetEntry = np.load("ProcessedDataset/TestEntry" + str(trajectoryNo) + ".npy", allow_pickle = True)
+    singleDatasetEntry = np.load("ProcessedDataset/TestEntry" + str(trajectoryNo) + ".npy", allow_pickle = True)
     #print(singleDatasetEntry)
-    singleTaskWaypoints = singleDatsetEntry[11]
+    #prepare tactile information
+    prepareTactileData(singleDatasetEntry)
+    
+    
+    
+    singleTaskWaypoints = singleDatasetEntry[11]
     #print(singleTaskWaypoints)
     WaypointsNoTime = singleTaskWaypoints[:,1:]
     #print(WaypointsNoTime)####flatten it to a single 1D array
@@ -112,9 +126,9 @@ for trajectoryNo in range(NoOfTrajectories):
     x[trajectoryNo] =  WaypointsNoTime1D
     
     #Get on/off signals for grasp succes or fail 1 - fail, 0 is success
-    failSignals = getFaillSuccessSignals(singleDatsetEntry)
+    failSignals = getFaillSuccessSignals(singleDatasetEntry)
     #get accelerations from physical model
-    accelerations = physicalModelAcceleration(singleDatsetEntry)
+    accelerations = physicalModelAcceleration(singleDatasetEntry)
     #getting finl thresholds
     thresholds = getThresholds(accelerations)
     #finaly translate it into ground truth for residual for learning

@@ -26,12 +26,22 @@ class Statistics:
         
     def readWrenches(self, simStep, proximal1, proximal2, proximal3, distal1, distal2, distal3):
         index = int(simStep/24)
-        self.proximal1[index] = proximal1
-        self.proximal2[index] = proximal2
-        self.proximal3[index] = proximal3
-        self.distal1[index] = distal1
-        self.distal2[index] = distal2
-        self.distal3[index] = distal3
+        #print(proximal1)
+        self.proximal1[index][:][:] = proximal1
+        #print()
+        #print()
+        #print()
+        #print(proximal1)
+        #print(self.proximal1[index][:][:])
+        #print(self.proximal1[:][:][2])
+        #temp = self.proximal1[:,:,2]
+        #print(temp.shape)
+        self.proximal2[index][:][:] = proximal2
+        self.proximal3[index][:][:] = proximal3
+        self.distal1[index][:][:] = distal1
+        self.distal2[index][:][:] = distal2
+        self.distal3[index][:][:] = distal3
+        #print(index)
         
     def printForcesX(self,simStep):
         index = int(simStep/24)
@@ -136,11 +146,14 @@ class Statistics:
             ifValid = 1
         #print(graspIndex)
         #line 1 - tactile info, line 2 - flags, line 3 - payload physics, line 4 - tasks, 
-        dataset = [self.proximal1[:][:][2], self.proximal2[:][:][2], self.proximal3[:][:][2], self.distal1[:][:][2], self.distal2[:][:][2], self.distal3[:][:][2],
+        dataset = [self.proximal1[:,:,2], self.proximal2[:,:,2], self.proximal3[:,:,2], self.distal1[:,:,2], self.distal2[:,:,2], self.distal3[:,:,2],
                    self.unwantedCollisionFlag, self.failFlag,
                    self.payloadOrientation, self.payloadVelocity, self.payloadAcceleration,
                    tasks, ifValid
                    ]
+        #print(self.proximal1)
+        #print()
+        print(dataset[0])
         entryName = "TestEntry" + str(iteration) + ".npy"
         fileName = "Dataset/" + entryName
         np.save(fileName, dataset)

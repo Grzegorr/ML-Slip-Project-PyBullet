@@ -80,6 +80,8 @@ for iteration in range(2000):
     datasetEntry = np.load("Dataset/TestEntry" + str(iteration) + ".npy", allow_pickle = True)
     #print(datasetEntry)
     #check for unwated collisions
+    #print()
+    #print(datasetEntry[0])
     if datasetEntry[12] == 1:
     #total accelaration at each simulation step
         totalAcceleration = -datasetEntry[10][:] + gravity #world frame of reference
