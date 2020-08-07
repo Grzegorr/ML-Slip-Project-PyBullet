@@ -115,7 +115,7 @@ def prepareTactileData(datasetEntry):
 #print(y_val)
 
 NoOfTrajectories = 1
-x = np.zeros((NoOfTrajectories,35,11))
+x = np.zeros((NoOfTrajectories,35,38))
 y = np.zeros((NoOfTrajectories,35))
 for trajectoryNo in range(NoOfTrajectories):
     singleDatasetEntry = np.load("ProcessedDataset/TestEntry" + str(trajectoryNo) + ".npy", allow_pickle = True)
@@ -136,9 +136,13 @@ for trajectoryNo in range(NoOfTrajectories):
         #print(temp_waypoint)
         WaypointsNoTime1D[i] = temp_waypoint
     #print(WaypointsNoTime1D)
-    x[trajectoryNo] =  WaypointsNoTime1D
     
     
+    
+    #merge trajectoriry with tactile information just before the given waypoint starts
+    x[trajectoryNo] = np.concatenate((tactileInfo,WaypointsNoTime1D), axis = 1)
+    
+        
     
     #Get on/off signals for grasp succes or fail 1 - fail, 0 is success
     failSignals = getFaillSuccessSignals(singleDatasetEntry)
@@ -156,7 +160,7 @@ y = y.tolist()
 
 
 model = Sequential()
-model.add(LSTM(64,return_sequences=True,input_shape = (35,11)))
+model.add(LSTM(64,return_sequences=True,input_shape = (35,38)))
 model.add(LSTM(128,return_sequences=True))
 model.add(LSTM(64,return_sequences=True))
 model.add(Dense(1))
