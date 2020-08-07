@@ -67,7 +67,8 @@ def groundTruth(thresholds,accelerations,failSignals):
         GT[waypoint] = gt
     return GT
 
-def prepareTactileData(dataEntry):
+def prepareTactileData(datasetEntry):
+    tactileInformation = np.zeros((35,27))
     #print("New Data Entry:")
     #print(dataEntry[0])
     proximal1_1000 = datasetEntry[0]
@@ -78,8 +79,20 @@ def prepareTactileData(dataEntry):
     distal3_1000 = datasetEntry[5]
     
     #indexes of tactile sensor reading just before the the start of next waypoint
+    indices = [270, 291, 312, 333, 354, 375, 395, 416, 437, 458, 479, 500, 520, 541, 562, 583, 604, 625, 645, 666, 687, 708, 729, 750, 770, 791, 812, 833, 854, 875, 895, 916, 937, 958, 979]
+    #print(len(indices))
+    for waypoint in range(35):
+        i = indices[waypoint] # timestep of tactile observation
+        #print(proximal1_1000[i][:])
+        tactileInformation[waypoint][:] = np.concatenate((proximal1_1000[i][:], proximal2_1000[i][:], proximal3_1000[i][:], distal1_1000[i][:], distal2_1000[i][:], distal3_1000[i][:]))
+        #print(tactileInformation[waypoint])
+    return tactileInformation
     
-        
+    
+    
+    
+    
+    
 
 ##That was first test inputs
 #x_train = [[
@@ -108,7 +121,7 @@ for trajectoryNo in range(NoOfTrajectories):
     singleDatasetEntry = np.load("ProcessedDataset/TestEntry" + str(trajectoryNo) + ".npy", allow_pickle = True)
     #print(singleDatasetEntry)
     #prepare tactile information
-    prepareTactileData(singleDatasetEntry)
+    tactileInfo = prepareTactileData(singleDatasetEntry)
     
     
     
@@ -124,6 +137,8 @@ for trajectoryNo in range(NoOfTrajectories):
         WaypointsNoTime1D[i] = temp_waypoint
     #print(WaypointsNoTime1D)
     x[trajectoryNo] =  WaypointsNoTime1D
+    
+    
     
     #Get on/off signals for grasp succes or fail 1 - fail, 0 is success
     failSignals = getFaillSuccessSignals(singleDatasetEntry)
