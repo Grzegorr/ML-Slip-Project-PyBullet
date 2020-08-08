@@ -20,6 +20,7 @@ def allStatsHandling():
         proximal1, proximal2, proximal3, distal1, distal2, distal3 = G.readTactile()
         #I.updateWindow(proximal1, proximal2, proximal3, distal1, distal2, distal3)   
         proximal1, proximal2, proximal3, distal1, distal2, distal3 = G.readTactileFull()
+        #print(proximal1)
         S.readWrenches(i, proximal1, proximal2, proximal3, distal1, distal2, distal3)
         forces = G.readJointsHand()
         #print(forces)
@@ -163,6 +164,7 @@ while(i in range (0,24000)):
         i = -1
         iteration = iteration + 1
         task = np.load("Tasks/PGTtest" + str(iteration) + ".npy", allow_pickle = True) 
+        G.turnSensorsOn()
         
         czas.dlugosc()
         
