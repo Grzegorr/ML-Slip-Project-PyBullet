@@ -36,11 +36,11 @@ class Statistics:
         #print(self.proximal1[:][:][2])
         #temp = self.proximal1[:,:,2]
         #print(temp.shape)
-        self.proximal2[index][:][:] = proximal2
-        self.proximal3[index][:][:] = proximal3
-        self.distal1[index][:][:] = distal1
-        self.distal2[index][:][:] = distal2
-        self.distal3[index][:][:] = distal3
+        self.proximal2[index,:,:] = proximal2
+        self.proximal3[index,:,:] = proximal3
+        self.distal1[index,:,:] = distal1
+        self.distal2[index,:,:] = distal2
+        self.distal3[index,:,:] = distal3
         #print(index)
         
     def printForcesX(self,simStep):
