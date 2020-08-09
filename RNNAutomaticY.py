@@ -89,7 +89,17 @@ def prepareTactileData(datasetEntry):
     return tactileInformation
     
     
-    
+def OnOffPredict(modelAccelerations, residuals, thresholds):
+    predictions = np.zeros(35)
+    for waypoint in range(35):
+        predictedForce = modelAccelerations[waypoint]/700.0 + residuals[waypoint]
+        print(predictedForce)
+        if predictedForce > thresholds[waypoint]/700.0:
+            predictions[waypoint] = 1
+        else:
+            predictions[waypoint] = 0
+    return predictions 
+        
     
     
     
@@ -114,9 +124,12 @@ def prepareTactileData(datasetEntry):
 #y_val = y_train
 #print(y_val)
 
-NoOfTrajectories = 1
+NoOfTrajectories = 1000
 x = np.zeros((NoOfTrajectories,35,38))
 y = np.zeros((NoOfTrajectories,35))
+Thresholds = np.zeros((NoOfTrajectories,35))
+Accelerations = np.zeros((NoOfTrajectories,35))
+ONOFFGroundTruth = np.zeros((NoOfTrajectories,35))
 for trajectoryNo in range(NoOfTrajectories):
     singleDatasetEntry = np.load("ProcessedDataset/TestEntry" + str(trajectoryNo) + ".npy", allow_pickle = True)
     #print(singleDatasetEntry)
@@ -146,10 +159,13 @@ for trajectoryNo in range(NoOfTrajectories):
     
     #Get on/off signals for grasp succes or fail 1 - fail, 0 is success
     failSignals = getFaillSuccessSignals(singleDatasetEntry)
+    ONOFFGroundTruth[trajectoryNo,:] = failSignals[:]
     #get accelerations from physical model
     accelerations = physicalModelAcceleration(singleDatasetEntry)
+    Accelerations[trajectoryNo,:] = accelerations[:,2]
     #getting finl thresholds
     thresholds = getThresholds(accelerations)
+    Thresholds[trajectoryNo,:] = thresholds[:]
     #finaly translate it into ground truth for residual for learning
     ground_truth = groundTruth(thresholds,accelerations,failSignals)
     y[trajectoryNo] = ground_truth
@@ -168,5 +184,24 @@ model.add(Dense(1))
 model.compile(optimizer='adam',loss='mse')
 history = model.fit(x, y,epochs=2000,batch_size=32,validation_data=(x, y))
 
-print(y[0])
-print(model.predict(x)[0])
+print(y[1000])
+residuals = model.predict(x)[1000]
+print(model.predict(x)[1000])
+
+graspPredictions = OnOffPredict(Accelerations[1000],residuals,Thresholds[1000])
+print("Grasp Predictions from the system")
+print(graspPredictions)
+print("Grasp - Ground Truth")
+print(ONOFFGroundTruth[1000])
+
+
+
+
+
+
+
+
+
+
+
+
