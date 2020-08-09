@@ -77,6 +77,7 @@ gravity = [0, 0, -9.81]
 fail_count = 0
 
 for iteration in range(2000):
+    print("Processing dataset Entry: " + str(iteration))
     datasetEntry = np.load("Dataset/TestEntry" + str(iteration) + ".npy", allow_pickle = True)
     #print(datasetEntry)
     #check for unwated collisions
