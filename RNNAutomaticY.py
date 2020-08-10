@@ -186,8 +186,40 @@ model.add(LSTM(64,return_sequences=True))
 model.add(Dense(1))
 
 model.compile(optimizer='adam',loss='mse')
-history = model.fit(x_train, y_train,epochs=2000,batch_size=32,validation_data=(x_train, y_train))
-model.save("TrainedNetworks/FirstModel.h5")
+
+
+
+
+
+history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_train, y_train))
+model.save("TrainedNetworks/LSTM_64_128_64_1000examples_200epochs_NoDropout.h5")
+
+history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_train, y_train))
+model.save("TrainedNetworks/LSTM_64_128_64_1000examples_400epochs_NoDropout.h5")
+
+history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_train, y_train))
+model.save("TrainedNetworks/LSTM_64_128_64_1000examples_600epochs_NoDropout.h5")
+
+history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_train, y_train))
+model.save("TrainedNetworks/LSTM_64_128_64_1000examples_700epochs_NoDropout.h5")
+
+history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_train, y_train))
+model.save("TrainedNetworks/LSTM_64_128_64_1000examples_1000epochs_NoDropout.h5")
+
+history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_train, y_train))
+model.save("TrainedNetworks/LSTM_64_128_64_1000examples_1200epochs_NoDropout.h5")
+
+history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_train, y_train))
+model.save("TrainedNetworks/LSTM_64_128_64_1000examples_1400epochs_NoDropout.h5")
+
+history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_train, y_train))
+model.save("TrainedNetworks/LSTM_64_128_64_1000examples_1600epochs_NoDropout.h5")
+
+history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_train, y_train))
+model.save("TrainedNetworks/LSTM_64_128_64_1000examples_1800epochs_NoDropout.h5")
+
+history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_train, y_train))
+model.save("TrainedNetworks/LSTM_64_128_64_1000examples_2000epochs_NoDropout.h5")
 
 print()
 print()
