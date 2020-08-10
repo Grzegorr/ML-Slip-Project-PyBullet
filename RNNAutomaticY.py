@@ -124,13 +124,14 @@ def OnOffPredict(modelAccelerations, residuals, thresholds):
 #y_val = y_train
 #print(y_val)
 
-NoOfTrajectories = 1000
+NoOfTrajectories = 1030
 x = np.zeros((NoOfTrajectories,35,38))
 y = np.zeros((NoOfTrajectories,35))
 Thresholds = np.zeros((NoOfTrajectories,35))
 Accelerations = np.zeros((NoOfTrajectories,35))
 ONOFFGroundTruth = np.zeros((NoOfTrajectories,35))
 for trajectoryNo in range(NoOfTrajectories):
+    #print(trajectoryNo)
     singleDatasetEntry = np.load("ProcessedDataset/TestEntry" + str(trajectoryNo) + ".npy", allow_pickle = True)
     #print(singleDatasetEntry)
     #prepare tactile information
@@ -172,6 +173,9 @@ for trajectoryNo in range(NoOfTrajectories):
 
 x = x.tolist()
 y = y.tolist()
+x_train = x[0:1000]
+y_train = y[0:1000]
+print(len(x_train))
 
 
 
@@ -182,8 +186,32 @@ model.add(LSTM(64,return_sequences=True))
 model.add(Dense(1))
 
 model.compile(optimizer='adam',loss='mse')
-history = model.fit(x, y,epochs=2000,batch_size=32,validation_data=(x, y))
+history = model.fit(x_train, y_train,epochs=2000,batch_size=32,validation_data=(x_train, y_train))
+model.save("TrainedNetworks/FirstModel.h5")
 
+print()
+print()
+print()
+print("Seen Example")
+print(y[999])
+residuals = model.predict(x)[999]
+print(model.predict(x)[999])
+
+graspPredictions = OnOffPredict(Accelerations[1000],residuals,Thresholds[999])
+print("Grasp Predictions from the system")
+print(graspPredictions)
+print("Grasp - Ground Truth")
+print(ONOFFGroundTruth[999])
+
+
+
+
+
+
+print()
+print()
+print()
+print("Unseen Example")
 print(y[1000])
 residuals = model.predict(x)[1000]
 print(model.predict(x)[1000])
