@@ -229,7 +229,7 @@ print(y[999])
 residuals = model.predict(x)[999]
 print(model.predict(x)[999])
 
-graspPredictions = OnOffPredict(Accelerations[1000],residuals,Thresholds[999])
+graspPredictions = OnOffPredict(Accelerations[999],residuals,Thresholds[999])
 print("Grasp Predictions from the system")
 print(graspPredictions)
 print("Grasp - Ground Truth")
