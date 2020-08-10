@@ -170,6 +170,12 @@ for trajectoryNo in range(NoOfTrajectories):
     #finaly translate it into ground truth for residual for learning
     ground_truth = groundTruth(thresholds,accelerations,failSignals)
     y[trajectoryNo] = ground_truth
+    
+np.save("Learning_Res/x",x)
+np.save("Learning_Res/y",y)
+np.save("Learning_Res/Thresholds",Thresholds)
+np.save("Learning_Res/Accelerations",Accelerations)
+np.save("Learning_Res/ONOFFGroundTruth",ONOFFGroundTruth)
 
 x = x.tolist()
 y = y.tolist()
