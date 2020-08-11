@@ -77,7 +77,7 @@ def prepareTactileData(datasetEntry):
     distal1_1000 = datasetEntry[3]
     distal2_1000 = datasetEntry[4]
     distal3_1000 = datasetEntry[5]
-    
+    #print(len(proximal1_1000))
     #indexes of tactile sensor reading just before the the start of next waypoint
     indices = [270, 291, 312, 333, 354, 375, 395, 416, 437, 458, 479, 500, 520, 541, 562, 583, 604, 625, 645, 666, 687, 708, 729, 750, 770, 791, 812, 833, 854, 875, 895, 916, 937, 958, 979]
     #print(len(indices))
@@ -124,14 +124,14 @@ def OnOffPredict(modelAccelerations, residuals, thresholds):
 #y_val = y_train
 #print(y_val)
 
-NoOfTrajectories = 1030
+NoOfTrajectories = 2000
 x = np.zeros((NoOfTrajectories,35,38))
 y = np.zeros((NoOfTrajectories,35))
 Thresholds = np.zeros((NoOfTrajectories,35))
 Accelerations = np.zeros((NoOfTrajectories,35))
 ONOFFGroundTruth = np.zeros((NoOfTrajectories,35))
 for trajectoryNo in range(NoOfTrajectories):
-    #print(trajectoryNo)
+    print(trajectoryNo)
     singleDatasetEntry = np.load("ProcessedDataset/TestEntry" + str(trajectoryNo) + ".npy", allow_pickle = True)
     #print(singleDatasetEntry)
     #prepare tactile information

@@ -95,7 +95,7 @@ for iteration in range(2000):
             #Now make the force in form that allows for choosing a threshold
             forceInGraspFOR[q] = CartesianToSpherical10deg(forceInGraspFOR[q])
         newData = [datasetEntry[0],datasetEntry[1],datasetEntry[2],datasetEntry[3],datasetEntry[4],datasetEntry[5],datasetEntry[6],datasetEntry[7],datasetEntry[8],datasetEntry[9],datasetEntry[10],datasetEntry[11],datasetEntry[12], forceInGraspFOR]
-        #print(newData)
+        print(len(newData[0]))
         entryName = "TestEntry" + str(iteration-fail_count) + ".npy"
         fileName = "ProcessedDataset/" + entryName
         np.save(fileName, newData)

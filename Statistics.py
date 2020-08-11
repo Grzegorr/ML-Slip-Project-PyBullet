@@ -153,7 +153,7 @@ class Statistics:
                    ]
         #print(self.proximal1)
         #print()
-        print(dataset[0])
+        print(dataset[1])
         entryName = "TestEntry" + str(iteration) + ".npy"
         fileName = "Dataset/" + entryName
         np.save(fileName, dataset)
