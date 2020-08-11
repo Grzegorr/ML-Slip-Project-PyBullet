@@ -164,6 +164,7 @@ while(i in range (0,24000)):
         i = -1
         iteration = iteration + 1
         task = np.load("Tasks/PGTtest" + str(iteration) + ".npy", allow_pickle = True) 
+        print("No. of waypoints in the task: " + str(len(task)))
         G.turnSensorsOn()
         
         czas.dlugosc()
