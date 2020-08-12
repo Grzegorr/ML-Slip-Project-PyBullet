@@ -21,8 +21,13 @@ def OnOffPredict(modelAccelerations, residuals, thresholds):
         else:
             predictions[waypoint] = 0
     return predictions 
+   
+   
+def multiplePredict(starIndex,endIndex,model):
+    print()
 
-model = keras.models.load_model("TrainedNetworks/LSTM_64_128_64_1000examples_2000epochs_NoDropout.h5")
+
+model = keras.models.load_model("TrainedNetworks/LSTM_256_256_128_900examples_2000epochs_NoDropout_LastLayerLSTM.h5")
 
 x = np.load("Learning_Res/x.npy")
 y = np.load("Learning_Res/y.npy")
@@ -36,49 +41,45 @@ print()
 print()
 print("Seen Example")
 print("Residual Ground Truth:")
-print(y[999])
-residuals = model.predict(x)[999]
+print(y[899])
+residuals = model.predict(x)[899]
 print("Residuals Predicted")
-print(model.predict(x)[999])
+print(model.predict(x)[899])
 
-graspPredictions = OnOffPredict(Accelerations[999],residuals,Thresholds[999])
+graspPredictions = OnOffPredict(Accelerations[899],residuals,Thresholds[899])
 print("Grasp Predictions from the system")
 print(graspPredictions)
 print("Grasp - Ground Truth")
-print(ONOFFGroundTruth[999])
-
-
-
-
+print(ONOFFGroundTruth[899])
 
 
 print()
 print()
 print()
 print("Unseen Example")
-print(y[1000])
-residuals = model.predict(x)[1000]
-print(model.predict(x)[1000])
+print(y[900])
+residuals = model.predict(x)[900]
+print(model.predict(x)[900])
 
-graspPredictions = OnOffPredict(Accelerations[1000],residuals,Thresholds[1000])
+graspPredictions = OnOffPredict(Accelerations[900],residuals,Thresholds[900])
 print("Grasp Predictions from the system")
 print(graspPredictions)
 print("Grasp - Ground Truth")
-print(ONOFFGroundTruth[1000])
+print(ONOFFGroundTruth[900])
 
 print()
 print()
 print()
 print("Another Unseen Example")
-print(y[1001])
-residuals = model.predict(x)[1001]
-print(model.predict(x)[1001])
+print(y[901])
+residuals = model.predict(x)[901]
+print(model.predict(x)[901])
 
-graspPredictions = OnOffPredict(Accelerations[1001],residuals,Thresholds[1001])
+graspPredictions = OnOffPredict(Accelerations[901],residuals,Thresholds[901])
 print("Grasp Predictions from the system")
 print(graspPredictions)
 print("Grasp - Ground Truth")
-print(ONOFFGroundTruth[1000])
+print(ONOFFGroundTruth[901])
 
 
 
