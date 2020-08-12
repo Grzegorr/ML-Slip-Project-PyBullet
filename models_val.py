@@ -10,6 +10,15 @@ from keras.models import Sequential
 from keras.layers import Flatten, Dense, SimpleRNN, LSTM
 model = Sequential()
 
+models = ["TrainedNetworks/LSTM_32_64_900examples_1000epochs_NoDropout_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_32_64_900examples_1600epochs_NoDropout_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_32_64_900examples_2000epochs_NoDropout_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_256_256_128_900examples_1000epochs_NoDropout_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_256_256_128_900examples_1600epochs_NoDropout_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_256_256_128_900examples_2000epochs_NoDropout_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_64_128_64_900examples_1000epochs_NoDropout_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_64_128_64_900examples_1600epochs_NoDropout_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_64_128_64_900examples_2000epochs_NoDropout_LastLayerLSTM.h5"]
 
 def OnOffPredict(modelAccelerations, residuals, thresholds):
     predictions = np.zeros(35)
@@ -23,17 +32,47 @@ def OnOffPredict(modelAccelerations, residuals, thresholds):
     return predictions 
    
    
-def multiplePredict(startIndex,endIndex,model,x,y):
+def multiplePredict(startIndex,endIndex,model,model_name,x,y,Accelerations,ONOFFGroundTruth,Thresholds):
+    error = 0
     predictions = model.predict(x[startIndex:endIndex])
     #print(predictions)
     groundTruthResidual = y[startIndex:endIndex]
-    for prediction in predictions:
-        for waypoint in pediction:        
-            error = abs(groundTruthResidual[prediction][waypoint]-prediction[prediction][waypoint])        
-    
+    for prediction in range(len(predictions)):
+        for waypoint in range(35):        
+            error = error + abs(predictions[prediction][waypoint] - groundTruthResidual[prediction][waypoint]) 
+    mean_absolute_error = error/(35*(endIndex-startIndex))
+    print()
+    print()
+    print("Model Name: " + str(model_name))
+    print("Prediction of the acceleration residual mean average error(Unseen Data): " + str(mean_absolute_error))
+    ONOFFErrors = 0
+    for i in range(startIndex,endIndex):
+        OnOffpreds = OnOffPredict(Accelerations[i],predictions[i-startIndex],Thresholds[i])
+        GT = ONOFFGroundTruth[i]
+        for pred in range(35):
+            if OnOffpreds[pred] != GT[pred]:
+                ONOFFErrors = ONOFFErrors + 1
+    ONOFFpercent = 100.0*ONOFFErrors/35/(endIndex-startIndex)
+    print("Percentage of OnOFF predicions right(Unseen Data): " + str(ONOFFpercent) + "%.")
+    error = 0
+    startIndex = startIndex - 100
+    endIndex = endIndex - 100
+    predictions = model.predict(x[startIndex:endIndex])
+    #print(predictions)
+    groundTruthResidual = y[startIndex:endIndex]
+    for prediction in range(len(predictions)):
+        for waypoint in range(35):        
+            error = error + abs(predictions[prediction][waypoint] - groundTruthResidual[prediction][waypoint]) 
+    mean_absolute_error = error/(35*(endIndex-startIndex))
+    print("Prediction of the acceleration residual mean average error(Training Data): " + str(mean_absolute_error))
     
 
-model = keras.models.load_model("TrainedNetworks/LSTM_256_256_128_900examples_2000epochs_NoDropout_LastLayerLSTM.h5")
+def fullModelAssessment(model_name,startIndex,endIndex,x,y,Accelerations,ONOFFGroundTruth,Thresholds):
+    #print(model_name)
+    model = keras.models.load_model(model_name)
+    multiplePredict(startIndex,endIndex,model,model_name,x,y,Accelerations,ONOFFGroundTruth,Thresholds)
+    
+
 
 x = np.load("Learning_Res/x.npy")
 y = np.load("Learning_Res/y.npy")
@@ -41,56 +80,59 @@ Thresholds = np.load("Learning_Res/Thresholds.npy")
 Accelerations = np.load("Learning_Res/Accelerations.npy")
 ONOFFGroundTruth = np.load("Learning_Res/ONOFFGroundTruth.npy")
 
-
-multiplePredict(900,1000,model,x)
-
-
+for model_name in models:
+    fullModelAssessment(model_name,900,1000,x,y,Accelerations,ONOFFGroundTruth,Thresholds)
 
 
-print()
-print()
-print()
-print("Seen Example")
-print("Residual Ground Truth:")
-print(y[899])
-residuals = model.predict(x)[899]
-print("Residuals Predicted")
-print(model.predict(x)[899])
-
-graspPredictions = OnOffPredict(Accelerations[899],residuals,Thresholds[899])
-print("Grasp Predictions from the system")
-print(graspPredictions)
-print("Grasp - Ground Truth")
-print(ONOFFGroundTruth[899])
 
 
-print()
-print()
-print()
-print("Unseen Example")
-print(y[900])
-residuals = model.predict(x)[900]
-print(model.predict(x)[900])
 
-graspPredictions = OnOffPredict(Accelerations[900],residuals,Thresholds[900])
-print("Grasp Predictions from the system")
-print(graspPredictions)
-print("Grasp - Ground Truth")
-print(ONOFFGroundTruth[900])
-
-print()
-print()
-print()
-print("Another Unseen Example")
-print(y[901])
-residuals = model.predict(x)[901]
-print(model.predict(x)[901])
-
-graspPredictions = OnOffPredict(Accelerations[901],residuals,Thresholds[901])
-print("Grasp Predictions from the system")
-print(graspPredictions)
-print("Grasp - Ground Truth")
-print(ONOFFGroundTruth[901])
+#model = keras.models.load_model(model_name)
+#multiplePredict(900,1000,model,x,y,Accelerations,ONOFFGroundTruth,Thresholds)
+#print()
+#print()
+#print()
+#print("Seen Example")
+#print("Residual Ground Truth:")
+#print(y[899])
+#residuals = model.predict(x)[899]
+#print("Residuals Predicted")
+#print(model.predict(x)[899])
+#
+#graspPredictions = OnOffPredict(Accelerations[899],residuals,Thresholds[899])
+#print("Grasp Predictions from the system")
+#print(graspPredictions)
+#print("Grasp - Ground Truth")
+#print(ONOFFGroundTruth[899])
+#
+#
+#print()
+#print()
+#print()
+#print("Unseen Example")
+#print(y[900])
+#residuals = model.predict(x)[900]
+#print(model.predict(x)[900])
+#
+#graspPredictions = OnOffPredict(Accelerations[900],residuals,Thresholds[900])
+#print("Grasp Predictions from the system")
+#print(graspPredictions)
+#print("Grasp - Ground Truth")
+#print(ONOFFGroundTruth[900])
+#
+#print()
+#print()
+#print()
+#print("Another Unseen Example")
+#print(y[901])
+#residuals = model.predict(x)[901]
+#print(model.predict(x)[901])
+#
+#graspPredictions = OnOffPredict(Accelerations[901],residuals,Thresholds[901])
+#print("Grasp Predictions from the system")
+#print(graspPredictions)
+#print("Grasp - Ground Truth")
+#print(ONOFFGroundTruth[901])
 
 
 

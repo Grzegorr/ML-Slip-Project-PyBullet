@@ -208,7 +208,7 @@ history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x
 model.save("TrainedNetworks/LSTM_32_64_900examples_600epochs_NoDropout_LastLayerLSTM.h5")
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_32_64_900examples_700epochs_NoDropout_LastLayerLSTM.h5")
+model.save("TrainedNetworks/LSTM_32_64_900examples_800epochs_NoDropout_LastLayerLSTM.h5")
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
 model.save("TrainedNetworks/LSTM_32_64_900examples_1000epochs_NoDropout_LastLayerLSTM.h5")

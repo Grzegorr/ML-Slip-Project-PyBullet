@@ -106,7 +106,7 @@ def multipleRandomTaskGenerator(noOfTasks):
         
 
 
-multipleRandomTaskGenerator(2000)
+multipleRandomTaskGenerator(30000)
 testTasksGenerate()
 
 
