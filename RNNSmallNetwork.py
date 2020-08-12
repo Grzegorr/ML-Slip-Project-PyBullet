@@ -188,9 +188,8 @@ print(len(x_train))
 
 
 model = Sequential()
-model.add(LSTM(256,return_sequences=True,input_shape = (35,38)))
-model.add(LSTM(256,return_sequences=True))
-model.add(LSTM(128,return_sequences=True))
+model.add(LSTM(32,return_sequences=True,input_shape = (35,38)))
+model.add(LSTM(64,return_sequences=True))
 model.add(LSTM(1,return_sequences=True))
 
 model.compile(optimizer='adam',loss='mse')
@@ -200,34 +199,34 @@ model.compile(optimizer='adam',loss='mse')
 
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_256_256_128_900examples_200epochs_NoDropout_LastLayerLSTM.h5")
+model.save("TrainedNetworks/LSTM_32_64_900examples_200epochs_NoDropout_LastLayerLSTM.h5")
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_256_256_128_900examples_400epochs_NoDropout_LastLayerLSTM.h5")
+model.save("TrainedNetworks/LSTM_32_64_900examples_400epochs_NoDropout_LastLayerLSTM.h5")
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_256_256_128_900examples_600epochs_NoDropout_LastLayerLSTM.h5")
+model.save("TrainedNetworks/LSTM_32_64_900examples_600epochs_NoDropout_LastLayerLSTM.h5")
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_256_256_128_900examples_700epochs_NoDropout_LastLayerLSTM.h5")
+model.save("TrainedNetworks/LSTM_32_64_900examples_700epochs_NoDropout_LastLayerLSTM.h5")
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_256_256_128_900examples_1000epochs_NoDropout_LastLayerLSTM.h5")
+model.save("TrainedNetworks/LSTM_32_64_900examples_1000epochs_NoDropout_LastLayerLSTM.h5")
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_256_256_128_900examples_1200epochs_NoDropout_LastLayerLSTM.h5")
+model.save("TrainedNetworks/LSTM_32_64_900examples_1200epochs_NoDropout_LastLayerLSTM.h5")
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_256_256_128_900examples_1400epochs_NoDropout_LastLayerLSTM.h5")
+model.save("TrainedNetworks/LSTM_32_64_900examples_1400epochs_NoDropout_LastLayerLSTM.h5")
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_256_256_128_900examples_1600epochs_NoDropout_LastLayerLSTM.h5")
+model.save("TrainedNetworks/LSTM_32_64_900examples_1600epochs_NoDropout_LastLayerLSTM.h5")
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_256_256_128_900examples_1800epochs_NoDropout_LastLayerLSTM.h5")
+model.save("TrainedNetworks/LSTM_32_64_900examples_1800epochs_NoDropout_LastLayerLSTM.h5")
 
 history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_256_256_128_900examples_2000epochs_NoDropout_LastLayerLSTM.h5")
+model.save("TrainedNetworks/LSTM_32_64_900examples_2000epochs_NoDropout_LastLayerLSTM.h5")
 
 
 

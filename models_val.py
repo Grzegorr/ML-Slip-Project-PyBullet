@@ -23,9 +23,15 @@ def OnOffPredict(modelAccelerations, residuals, thresholds):
     return predictions 
    
    
-def multiplePredict(starIndex,endIndex,model):
-    print()
-
+def multiplePredict(startIndex,endIndex,model,x,y):
+    predictions = model.predict(x[startIndex:endIndex])
+    #print(predictions)
+    groundTruthResidual = y[startIndex:endIndex]
+    for prediction in predictions:
+        for waypoint in pediction:        
+            error = abs(groundTruthResidual[prediction][waypoint]-prediction[prediction][waypoint])        
+    
+    
 
 model = keras.models.load_model("TrainedNetworks/LSTM_256_256_128_900examples_2000epochs_NoDropout_LastLayerLSTM.h5")
 
@@ -34,6 +40,11 @@ y = np.load("Learning_Res/y.npy")
 Thresholds = np.load("Learning_Res/Thresholds.npy")
 Accelerations = np.load("Learning_Res/Accelerations.npy")
 ONOFFGroundTruth = np.load("Learning_Res/ONOFFGroundTruth.npy")
+
+
+multiplePredict(900,1000,model,x)
+
+
 
 
 print()
