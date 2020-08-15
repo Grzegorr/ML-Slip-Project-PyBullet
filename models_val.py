@@ -18,7 +18,55 @@ models = ["TrainedNetworks/LSTM_32_64_900examples_1000epochs_NoDropout_LastLayer
           "TrainedNetworks/LSTM_256_256_128_900examples_2000epochs_NoDropout_LastLayerLSTM.h5",
           "TrainedNetworks/LSTM_64_128_64_900examples_1000epochs_NoDropout_LastLayerLSTM.h5",
           "TrainedNetworks/LSTM_64_128_64_900examples_1600epochs_NoDropout_LastLayerLSTM.h5",
-          "TrainedNetworks/LSTM_64_128_64_900examples_2000epochs_NoDropout_LastLayerLSTM.h5"]
+          "TrainedNetworks/LSTM_64_128_64_900examples_2000epochs_NoDropout_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_256_256_128_900examples_400epochs_Dropout_50_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_256_256_128_900examples_1200epochs_Dropout_50_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_256_256_128_900examples_2000epochs_Dropout_50_LastLayerLSTM.h5",
+          "TrainedNetworks/LSTM_256_256_128_900examples_400epochs_Dropout_50_LastLayerLSTM.h5"]
+          
+models_taskOnly = ["TrainedNetworks/LSTM_TaskOnly_128_64_900examples_200epochs_NoDropout_LastLayerLSTM.h5",
+                    "TrainedNetworks/LSTM_TaskOnly_128_64_900examples_400epochs_NoDropout_LastLayerLSTM.h5",
+                    "TrainedNetworks/LSTM_TaskOnly_128_64_900examples_600epochs_NoDropout_LastLayerLSTM.h5",
+                    "TrainedNetworks/LSTM_TaskOnly_128_64_900examples_800epochs_NoDropout_LastLayerLSTM.h5",
+                    "TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1000epochs_NoDropout_LastLayerLSTM.h5",
+                    "TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1200epochs_NoDropout_LastLayerLSTM.h5",
+                    "TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1400epochs_NoDropout_LastLayerLSTM.h5",
+                    "TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1600epochs_NoDropout_LastLayerLSTM.h5",
+                    "TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1800epochs_NoDropout_LastLayerLSTM.h5",
+                    "TrainedNetworks/LSTM_TaskOnly_128_64_900examples_2000epochs_NoDropout_LastLayerLSTM.h5"
+                   ]
+                  
+models_smallNetwork = [
+                        "TrainedNetworks/LSTM_32_64_900examples_200epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_32_64_900examples_400epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_32_64_900examples_600epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_32_64_900examples_1000epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_32_64_900examples_1400epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_32_64_900examples_2000epochs_NoDropout_LastLayerLSTM.h5"
+                        ]
+                        
+models_mediumNetwork = [
+                        "TrainedNetworks/LSTM_64_128_64_900examples_200epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_64_128_64_900examples_400epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_64_128_64_900examples_600epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_64_128_64_900examples_1000epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_64_128_64_900examples_1400epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_64_128_64_900examples_2000epochs_NoDropout_LastLayerLSTM.h5"
+                        ]
+                        
+models_largeNetwork = [
+                        "TrainedNetworks/LSTM_256_256_128_900examples_200epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_256_256_128_900examples_400epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_256_256_128_900examples_600epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_256_256_128_900examples_1000epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_256_256_128_900examples_1400epochs_NoDropout_LastLayerLSTM.h5",
+                        "TrainedNetworks/LSTM_256_256_128_900examples_2000epochs_NoDropout_LastLayerLSTM.h5"
+                        ]
+                        
+                        
+                        
+                        
+                        
 
 def OnOffPredict(modelAccelerations, residuals, thresholds):
     predictions = np.zeros(35)
@@ -45,26 +93,44 @@ def multiplePredict(startIndex,endIndex,model,model_name,x,y,Accelerations,ONOFF
     print()
     print("Model Name: " + str(model_name))
     print("Prediction of the acceleration residual mean average error(Unseen Data): " + str(mean_absolute_error))
+    
+    
+    
     ONOFFErrors = 0
     for i in range(startIndex,endIndex):
+        #print(i)
         OnOffpreds = OnOffPredict(Accelerations[i],predictions[i-startIndex],Thresholds[i])
         GT = ONOFFGroundTruth[i]
         for pred in range(35):
             if OnOffpreds[pred] != GT[pred]:
                 ONOFFErrors = ONOFFErrors + 1
     ONOFFpercent = 100.0*ONOFFErrors/35/(endIndex-startIndex)
-    print("Percentage of OnOFF predicions right(Unseen Data): " + str(ONOFFpercent) + "%.")
+    print("Percentage of OnOFF predicions right(Unseen Data): " + str(100 - ONOFFpercent) + "%.")
+    
+        
     error = 0
-    startIndex = startIndex - 100
-    endIndex = endIndex - 100
-    predictions = model.predict(x[startIndex:endIndex])
+    predictions = model.predict(x[0:startIndex])
     #print(predictions)
-    groundTruthResidual = y[startIndex:endIndex]
+    groundTruthResidual = y[0:startIndex]
     for prediction in range(len(predictions)):
         for waypoint in range(35):        
             error = error + abs(predictions[prediction][waypoint] - groundTruthResidual[prediction][waypoint]) 
-    mean_absolute_error = error/(35*(endIndex-startIndex))
+    mean_absolute_error = error/(35*(startIndex))
     print("Prediction of the acceleration residual mean average error(Training Data): " + str(mean_absolute_error))
+    
+    
+    ONOFFErrors = 0
+    for i in range(startIndex):
+        OnOffpreds = OnOffPredict(Accelerations[i],predictions[i],Thresholds[i])
+        GT = ONOFFGroundTruth[i]
+        for pred in range(35):
+            if OnOffpreds[pred] != GT[pred]:
+                ONOFFErrors = ONOFFErrors + 1
+    ONOFFpercent = 100.0*ONOFFErrors/35/(startIndex)
+    print("Percentage of OnOFF predicions right(Training Data): " + str(100 - ONOFFpercent) + "%.")
+    
+    
+    
     
 
 def fullModelAssessment(model_name,startIndex,endIndex,x,y,Accelerations,ONOFFGroundTruth,Thresholds):
@@ -80,7 +146,11 @@ Thresholds = np.load("Learning_Res/Thresholds.npy")
 Accelerations = np.load("Learning_Res/Accelerations.npy")
 ONOFFGroundTruth = np.load("Learning_Res/ONOFFGroundTruth.npy")
 
-for model_name in models:
+#for model_name in models:
+#for model_name in models_taskOnly:
+#for model_name in models_smallNetwork:
+#for model_name in models_mediumNetwork:
+for model_name in models_largeNetwork:
     fullModelAssessment(model_name,900,1000,x,y,Accelerations,ONOFFGroundTruth,Thresholds)
 
 
