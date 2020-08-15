@@ -8,7 +8,7 @@ import keras
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Flatten, Dense, SimpleRNN, LSTM
-model = Sequential()
+from matplotlib import pyplot as plt
 
 models = ["TrainedNetworks/LSTM_32_64_900examples_1000epochs_NoDropout_LastLayerLSTM.h5",
           "TrainedNetworks/LSTM_32_64_900examples_1600epochs_NoDropout_LastLayerLSTM.h5",
@@ -63,10 +63,23 @@ models_largeNetwork = [
                         "TrainedNetworks/LSTM_256_256_128_900examples_2000epochs_NoDropout_LastLayerLSTM.h5"
                         ]
                         
+historyToPlot = [
+                    "TrainedNetworks/LSTM_256_256_128_900examples_2000epochs_NoDropout_LastLayerLSTM.h5"
+                ]                        
                         
                         
-                        
-                        
+def plotHistoricalLoss(model,model_name):
+    model.summary()
+    print(model.history)
+    plt.cla()
+    plt.plot(model.history['loss'])
+    plt.plot(model.history['val_loss'])
+    plt.title('Model Loss on Training and Test Datasets')
+    plt.ylabel('Mean Squared Error')
+    plt.xlabel('Epoch')
+    plt.ylim((0,1))
+    plt.legend(['Train-set', 'Test-set'], loc='upper left')
+    plt.savefig("HistoryPlots/" + str(model_name) + ".png")                       
 
 def OnOffPredict(modelAccelerations, residuals, thresholds):
     predictions = np.zeros(35)
@@ -150,10 +163,16 @@ ONOFFGroundTruth = np.load("Learning_Res/ONOFFGroundTruth.npy")
 #for model_name in models_taskOnly:
 #for model_name in models_smallNetwork:
 #for model_name in models_mediumNetwork:
-for model_name in models_largeNetwork:
-    fullModelAssessment(model_name,900,1000,x,y,Accelerations,ONOFFGroundTruth,Thresholds)
+#for model_name in models_largeNetwork:
+#    fullModelAssessment(model_name,900,1000,x,y,Accelerations,ONOFFGroundTruth,Thresholds)
 
 
+
+
+
+for model_name in historyToPlot:
+    model = keras.models.load_model(model_name)
+    plotHistoricalLoss(model,model_name)
 
 
 
