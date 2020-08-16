@@ -9,6 +9,7 @@ Created on Sat Jul 25 12:29:23 2020
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Flatten, Dense, SimpleRNN, LSTM
+from matplotlib import pyplot as plt
 
 def getFaillSuccessSignals(datasetEntry):
     signals = np.zeros(35)
@@ -188,8 +189,9 @@ print(len(x_train))
 
 
 model = Sequential()
-model.add(LSTM(128,return_sequences=True,input_shape = (35,11)))
-model.add(LSTM(64,return_sequences=True))
+model.add(LSTM(256,return_sequences=True,input_shape = (35,11)))
+model.add(LSTM(256,return_sequences=True))
+model.add(LSTM(128,return_sequences=True))
 model.add(LSTM(1,return_sequences=True))
 
 model.compile(optimizer='adam',loss='mse')
@@ -198,35 +200,49 @@ model.compile(optimizer='adam',loss='mse')
 
 
 
-history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_200epochs_NoDropout_LastLayerLSTM.h5")
+history = model.fit(x_train, y_train,epochs=500,batch_size=32,validation_data=(x_val, y_val))
 
-history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_400epochs_NoDropout_LastLayerLSTM.h5")
+print(model.history)
+plt.plot(model.history.history['loss'])
+plt.plot(model.history.history['val_loss'])
+plt.title('Model Loss on Training and Test Datasets')
+plt.ylabel('Mean Squared Error')
+plt.xlabel('Epoch')
+plt.ylim((0,0.05))
+plt.legend(['Train-set', 'Test-set'], loc='upper left')
+plt.savefig("HistoryPlots/LargeNwtworkTaskOnly.png")
 
-history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_600epochs_NoDropout_LastLayerLSTM.h5")
 
-history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_800epochs_NoDropout_LastLayerLSTM.h5")
 
-history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1000epochs_NoDropout_LastLayerLSTM.h5")
 
-history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1200epochs_NoDropout_LastLayerLSTM.h5")
-
-history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1400epochs_NoDropout_LastLayerLSTM.h5")
-
-history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1600epochs_NoDropout_LastLayerLSTM.h5")
-
-history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1800epochs_NoDropout_LastLayerLSTM.h5")
-
-history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
-model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_2000epochs_NoDropout_LastLayerLSTM.h5")
+#model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_200epochs_NoDropout_LastLayerLSTM.h5")
+#
+#history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
+#model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_400epochs_NoDropout_LastLayerLSTM.h5")
+#
+#history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
+#model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_600epochs_NoDropout_LastLayerLSTM.h5")
+#
+#history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
+#model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_800epochs_NoDropout_LastLayerLSTM.h5")
+#
+#history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
+#model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1000epochs_NoDropout_LastLayerLSTM.h5")
+#
+#history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
+#model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1200epochs_NoDropout_LastLayerLSTM.h5")
+#
+#history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
+#model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1400epochs_NoDropout_LastLayerLSTM.h5")
+#
+#history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
+#model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1600epochs_NoDropout_LastLayerLSTM.h5")
+#
+#history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
+#model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_1800epochs_NoDropout_LastLayerLSTM.h5")
+#
+#history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
+#model.save("TrainedNetworks/LSTM_TaskOnly_128_64_900examples_2000epochs_NoDropout_LastLayerLSTM.h5")
 
 
 
@@ -249,21 +265,6 @@ print(ONOFFGroundTruth[999])
 
 
 
-
-
-print()
-print()
-print()
-print("Unseen Example")
-print(y[1000])
-residuals = model.predict(x)[1000]
-print(model.predict(x)[1000])
-
-graspPredictions = OnOffPredict(Accelerations[1000],residuals,Thresholds[1000])
-print("Grasp Predictions from the system")
-print(graspPredictions)
-print("Grasp - Ground Truth")
-print(ONOFFGroundTruth[1000])
 
 
 
