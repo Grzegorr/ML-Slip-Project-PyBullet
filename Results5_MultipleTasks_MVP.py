@@ -88,8 +88,8 @@ task = np.load("Tasks/PGTtest0.npy", allow_pickle = True)
     
     
 #Connet to the API
-#physicsClient = p.connect(p.GUI)
-physicsClient = p.connect(p.DIRECT)
+physicsClient = p.connect(p.GUI)
+#physicsClient = p.connect(p.DIRECT)
 
 #Path to defaultyly downloaded data
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
