@@ -14,10 +14,10 @@ from keras.layers import Flatten, Dense, Dropout
 import keras
 from matplotlib import pyplot as plt
 
-location = "1_DatasetSplit"
+#location = "1_DatasetSplit"
 #location = "2_xyzDiff"
 #location = "3_allPoseDiff"
-#location = "4_UpToFail"
+location = "4_UpToFail"
 
 x = np.load(location + "/x.npy")
 y = np.load(location + "/y.npy")
@@ -43,10 +43,10 @@ model.add(Dense(256, activation='relu'))
 model.add(Dense(128, activation='relu'))
 model.add(Dense(2, activation='softmax'))
 model.compile(loss=keras.losses.categorical_crossentropy, optimizer=keras.optimizers.Adadelta(), metrics=['accuracy'])
-history = model.fit(x_train, y_train,epochs=200,batch_size=32,validation_data=(x_val, y_val))
+history = model.fit(x_train, y_train,epochs=500,batch_size=32,validation_data=(x_val, y_val))
 model.summary() 
 
-print(model.history.history)
+#print(model.history.history)
 plt.plot(model.history.history['loss'])
 plt.plot(model.history.history['val_loss'])
 plt.title('Model Loss on Training and Test Datasets')
