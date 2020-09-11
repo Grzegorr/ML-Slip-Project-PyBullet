@@ -117,7 +117,7 @@ class ArmController:
         if i > 6050:
             G.closeHandTorques()
         self.IKiteration([0.5,0,0.5], self.client.getQuaternionFromEuler([1.57,0,0]), i, 6100,6400)
-        print(self.client.getQuaternionFromEuler([1.57,0,0]))
+        #print(self.client.getQuaternionFromEuler([1.57,0,0]))
     
     
     

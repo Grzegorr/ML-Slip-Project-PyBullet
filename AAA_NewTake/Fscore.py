@@ -6,11 +6,18 @@ Created on Thu Sep 10 21:18:31 2020
 @author: greg
 """
 
+###CheatSheet
+
+### TN = [>] [1,0]
+
+
+
+
 import numpy as np
-#location = "1_DatasetSplit"
+location = "1_DatasetSplit"
 #location = "2_xyzDiff"
 #location = "3_allPoseDiff"
-location = "4_UpToFail"
+#location = "4_UpToFail"
 
 y_predicted = np.load(location + "/y_predicted.npy", allow_pickle = True)
 y_GT_for_predictions = np.load(location + "/y_GT_for_predictions.npy", allow_pickle = True)  
@@ -32,11 +39,11 @@ for i in range(no_entries):
             FN = FN + 1
     else:  #positive
         if y_GT_for_predictions[i][1] == 1: 
-            FP = FP + 1
-        else:
             TP = TP + 1
+        else:
+            FP = FP + 1
 
-print("Results:  ")
+print("Results 500 epochs:  ")
 print("TP: " + str(TP) + "  ")
 print("FP: " + str(FP) + "  ")
 print("TN: " + str(TN) + "  ")

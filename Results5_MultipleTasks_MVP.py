@@ -124,7 +124,7 @@ G.lockSpreadFingersJoints()
 czas = KC()
 i = 0
 iteration = 0
-logging = p.startStateLogging(p.STATE_LOGGING_VIDEO_MP4,"rec.MP4")
+#logging = p.startStateLogging(p.STATE_LOGGING_VIDEO_MP4,"rec.MP4")
 
 #Run the simulation
 while(i in range (0,24000)):
@@ -140,7 +140,7 @@ while(i in range (0,24000)):
         #time.sleep(1./240.)
         #time.sleep(1./40.)
     if i == 23999:   
-        p.stopStateLogging(logging)
+        #p.stopStateLogging(logging)
         p.resetSimulation()
         #Setting the gravity
         p.setGravity(0,0,-9.81)
