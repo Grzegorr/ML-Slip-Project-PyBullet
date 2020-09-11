@@ -1,0 +1,3 @@
+Now x,y,z are shown to the network as differences with respect to previous waypoint.
+Quaternions as a difference too
+
