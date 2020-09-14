@@ -76,7 +76,7 @@ def CartesianToSpherical10deg(vec):
 gravity = [0, 0, -9.81]
 fail_count = 0
 
-for iteration in range(20000):
+for iteration in range(6000):
     print("Processing dataset Entry: " + str(iteration))
     datasetEntry = np.load("Dataset/TestEntry" + str(iteration) + ".npy", allow_pickle = True)
     #print(datasetEntry)

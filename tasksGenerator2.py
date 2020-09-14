@@ -66,7 +66,7 @@ def autoTaskGenerator(genTaskConter):
     firstStartStep = 6500
     previousPos = [0.5,0,0.5]
     #boundries = [timeDifference,position, orientation,]
-    boundries = [ [100,1000], [[-0.1, -0.1, -0.1],[0.1 ,0.1, 0.1]], [[-3.14, -3.14, -3.14],[3.14, 3.14, 3.14]], [0,1], [0,1], [0,1], [0,1] ] 
+    boundries = [ [100,1000], [[-0.1, -0.1, -0.1],[0.1 ,0.1, 0.1]], [[-3.14, -3.14, -3.14],[3.14, 3.14, 3.14]], [0,0.6], [0,0.6], [0,0.6], [0,0.6] ] 
     task = []
     startTime = firstStartStep
     while(1):
