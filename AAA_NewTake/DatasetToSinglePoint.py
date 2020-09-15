@@ -10,7 +10,7 @@ import numpy as np
 import pybullet as p
 from math import *
 
-dataset_size = 2500
+dataset_size = 3200
 x = np.zeros((dataset_size*35, 38))
 y = np.zeros(dataset_size*35)
 
@@ -85,8 +85,8 @@ for iteration in range(dataset_size):
         y[35*iteration + event_no] = failSignals[event_no]
     #print(y)
     
-np.save("1_DatasetSplit/x",x)
-np.save("1_DatasetSplit/y",y)
+np.save("1_DatasetSplitAggresive/x",x)
+np.save("1_DatasetSplitAggresive/y",y)
 
 
 
@@ -136,8 +136,8 @@ for iteration in range(dataset_size):
         y[35*iteration + event_no] = failSignals[event_no]
     #print(y)
     
-np.save("2_xyzDiff/x",x)
-np.save("2_xyzDiff/y",y)
+np.save("2_xyzDiffAggresive/x",x)
+np.save("2_xyzDiffAggresive/y",y)
     
 
 
@@ -201,8 +201,8 @@ for iteration in range(dataset_size):
         y[35*iteration + event_no] = failSignals[event_no]
     #print(y)
     
-np.save("3_allPoseDiff/x",x)
-np.save("3_allPoseDiff/y",y)    
+np.save("3_allPoseDiffAggresive/x",x)
+np.save("3_allPoseDiffAggresive/y",y)    
 
 
 
@@ -285,8 +285,8 @@ x = x[0:counter]
 y = y[0:counter]
 
 print(y)
-np.save("4_UpToFail/x",x)
-np.save("4_UpToFail/y",y)       
+np.save("4_UpToFailAggresive/x",x)
+np.save("4_UpToFailAggresive/y",y)       
     
     
     

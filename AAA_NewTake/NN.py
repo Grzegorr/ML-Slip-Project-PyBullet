@@ -14,10 +14,14 @@ from keras.layers import Flatten, Dense, Dropout
 import keras
 from matplotlib import pyplot as plt
 
-location = "1_DatasetSplit"
+#location = "1_DatasetSplit"
 #location = "2_xyzDiff"
 #location = "3_allPoseDiff"
 #location = "4_UpToFail"
+#location = "1_DatasetSplitAggresive"
+#location = "2_xyzDiffAggresive"
+location = "3_allPoseDiffAggresive"
+#location = "4_UpToFailAggresive"
 
 x = np.load(location + "/x.npy")
 y = np.load(location + "/y.npy")

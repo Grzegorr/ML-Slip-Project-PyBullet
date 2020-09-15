@@ -14,10 +14,14 @@ Created on Thu Sep 10 21:18:31 2020
 
 
 import numpy as np
-location = "1_DatasetSplit"
+#location = "1_DatasetSplit"
 #location = "2_xyzDiff"
 #location = "3_allPoseDiff"
 #location = "4_UpToFail"
+#location = "1_DatasetSplitAggresive"
+#location = "2_xyzDiffAggresive"
+location = "3_allPoseDiffAggresive"
+#location = "4_UpToFailAggresive"
 
 y_predicted = np.load(location + "/y_predicted.npy", allow_pickle = True)
 y_GT_for_predictions = np.load(location + "/y_GT_for_predictions.npy", allow_pickle = True)  
