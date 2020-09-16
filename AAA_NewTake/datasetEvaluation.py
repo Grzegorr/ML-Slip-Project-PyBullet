@@ -10,7 +10,8 @@ import numpy as np
 import pybullet as p
 from math import *
 import matplotlib.pyplot as plt
-dataset_size = 1000
+dataset_size = 130
+data_location = "ProcessedDataset"
 
 def getFaillSuccessSignals(datasetEntry):
     signals = np.zeros(35)
@@ -34,7 +35,7 @@ fail_indexes = np.zeros(dataset_size)
 no_not_failed = 0
 for iteration in range(dataset_size):
     #print("Processing dataset Entry: " + str(iteration))
-    datasetEntry = np.load("FinalDataset/TestEntry" + str(iteration) + ".npy", allow_pickle = True)
+    datasetEntry = np.load(data_location + "/TestEntry" + str(iteration) + ".npy", allow_pickle = True)
     signals = getFaillSuccessSignals(datasetEntry)
     signals = signals.tolist()
     fail_index = signals.count(0)
@@ -60,7 +61,7 @@ plt.title('Histogram')
 maxfreq = n.max()
 # Set a clean upper y-axis limit.
 plt.ylim(ymax=np.ceil(maxfreq / 10) * 10 if maxfreq % 10 else maxfreq + 10)
-plt.savefig("oldWayOfGeneration.png")
+plt.savefig("newWayOfGeneration.png")
 plt.show()
 
 

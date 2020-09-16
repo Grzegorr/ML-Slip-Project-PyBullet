@@ -19,9 +19,11 @@ from matplotlib import pyplot as plt
 #location = "3_allPoseDiff"
 #location = "4_UpToFail"
 #location = "1_DatasetSplitAggresive"
-#location = "2_xyzDiffAggresive"
-location = "3_allPoseDiffAggresive"
+location = "2_xyzDiffAggresive"
+#location = "3_allPoseDiffAggresive"
 #location = "4_UpToFailAggresive"
+#location = "6_DownsampledData"
+
 
 x = np.load(location + "/x.npy")
 y = np.load(location + "/y.npy")
@@ -31,11 +33,12 @@ y = keras.utils.to_categorical(y, 2)
 
 print("Length of x: " + str(len(x)))
 
-
-x_train = x[0:50000]
-y_train = y[0:50000]
-x_val = x[50001:54000]
-y_val = y[50001:54000]
+length = len(x)
+boundry = int(0.9 * len(x))
+x_train = x[0:boundry]
+y_train = y[0:boundry]
+x_val = x[boundry + 1:length]
+y_val = y[boundry + 1:length]
 
 #print(x_val)
 print(len(x_train[0]))

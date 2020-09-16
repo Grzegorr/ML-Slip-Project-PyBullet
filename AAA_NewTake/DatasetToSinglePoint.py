@@ -9,6 +9,7 @@ Created on Wed Sep  9 18:21:26 2020
 import numpy as np
 import pybullet as p
 from math import *
+import random
 
 dataset_size = 3200
 x = np.zeros((dataset_size*35, 38))
@@ -288,15 +289,40 @@ print(y)
 np.save("4_UpToFailAggresive/x",x)
 np.save("4_UpToFailAggresive/y",y)       
     
+###Downsamplling and upsampling
+no_fail_indexes = np.where(y == 0)
+fail_indexes = np.where(y == 1)
+number_no_fail = len(no_fail_indexes[0])    
+number_fail = len(fail_indexes[0])
+print(fail_indexes)  
+print(number_fail)
+print(number_no_fail)   
     
+x_no_fail = np.zeros((number_no_fail, 38))
+x_fail = np.zeros((number_fail, 38))  
+
+dummy = 0
+for index in no_fail_indexes[0]:
+    x_no_fail[dummy,:] = x[index,:]
+    dummy = dummy + 1
     
+dummy = 0
+for index in fail_indexes[0]:
+    x_fail[dummy,:] = x[index,:]
+    dummy = dummy + 1
+
+x_downsampled = np.zeros((2*number_fail,38))
+y_downsampled = np.zeros(2*number_fail)
+
+for i in range(number_fail):
+    x_downsampled[2*i,:] = x_fail[i,:]
+    y_downsampled[2*i] = 1
+    index = random.randrange(len(x_no_fail))
+    x_downsampled[2*i+1,:] = x_no_fail[index,:]
+    y_downsampled[2*i+1] = 0
     
-    
-    
-    
-    
-    
-    
+np.save("6_DownsampledData/x",x_downsampled)
+np.save("6_DownsampledData/y",y_downsampled)   
     
     
     
