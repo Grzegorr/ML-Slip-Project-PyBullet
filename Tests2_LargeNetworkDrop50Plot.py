@@ -211,7 +211,6 @@ plt.plot(model.history.history['val_loss'])
 plt.title('Model Loss on Training and Test Datasets')
 plt.ylabel('Mean Squared Error')
 plt.xlabel('Epoch')
-plt.ylim((0,0.05))
 plt.legend(['Train-set', 'Test-set'], loc='upper left')
 plt.savefig("HistoryPlots/LargeNwtwork2000Drop50.png")
 
