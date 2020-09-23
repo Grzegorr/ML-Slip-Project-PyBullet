@@ -1,0 +1,3770 @@
+<?xml version="1.0" ?>
+<robot name="COMcylinder">
+
+<link name= "cylinder_top" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<cylinder radius="0.2" length="0.05" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.2"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<cylinder radius="0.2" length="0.05" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+<link name= "cylinder_bottom" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<cylinder radius="0.2" length="0.05" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.2"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<cylinder radius="0.2" length="0.05" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "top_to_bottom" type = "fixed" >
+	< origin rpy = "0 0 0" xyz = "0 0 0.5" />
+	< parent link = "cylinder_top" />
+	< child link = "cylinder_bottom" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece0" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece0" type = "fixed" >
+	< origin rpy = "0 0 0.0" xyz = "0.2 0.0 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece0" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece1" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece1" type = "fixed" >
+	< origin rpy = "0 0 0.06977777777777779" xyz = "0.19951330369544537 0.013944233522463424 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece1" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece2" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece2" type = "fixed" >
+	< origin rpy = "0 0 0.13955555555555557" xyz = "0.1980555835147101 0.02782060097567455 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece2" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece3" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece3" type = "fixed" >
+	< origin rpy = "0 0 0.20933333333333334" xyz = "0.19563393412804456 0.04156156659203217 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece3" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece4" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece4" type = "fixed" >
+	< origin rpy = "0 0 0.27911111111111114" xyz = "0.19226014161352298 0.05510025359967135 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece4" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece5" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece5" type = "fixed" >
+	< origin rpy = "0 0 0.3488888888888889" xyz = "0.18795062609463684 0.06837076970924069 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece5" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece6" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece6" type = "fixed" >
+	< origin rpy = "0 0 0.4186666666666667" xyz = "0.18272636182416077 0.08130852780923958 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece6" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece7" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece7" type = "fixed" >
+	< origin rpy = "0 0 0.48844444444444446" xyz = "0.17661277510323936 0.09385056030910312 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece7" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece8" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece8" type = "fixed" >
+	< origin rpy = "0 0 0.5582222222222223" xyz = "0.16963962053251905 0.10593582560013842 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece8" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece9" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece9" type = "fixed" >
+	< origin rpy = "0 0 0.628" xyz = "0.16184083619760647 0.11750550514277838 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece9" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece10" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece10" type = "fixed" >
+	< origin rpy = "0 0 0.6977777777777778" xyz = "0.15325437849365978 0.12850328973424016 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece10" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece11" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece11" type = "fixed" >
+	< origin rpy = "0 0 0.7675555555555555" xyz = "0.14392203739301623 0.13887565356333426 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece11" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece12" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece12" type = "fixed" >
+	< origin rpy = "0 0 0.8373333333333334" xyz = "0.13388923305494113 0.14857211471860948 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece12" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece13" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece13" type = "fixed" >
+	< origin rpy = "0 0 0.9071111111111111" xyz = "0.12320479476739109 0.15754548088195053 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece13" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece14" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece14" type = "fixed" >
+	< origin rpy = "0 0 0.9768888888888889" xyz = "0.111920723296674 0.1657520790118463 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece14" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece15" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece15" type = "fixed" >
+	< origin rpy = "0 0 1.0466666666666666" xyz = "0.10009193780164116 0.17315196789846887 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece15" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece16" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece16" type = "fixed" >
+	< origin rpy = "0 0 1.1164444444444446" xyz = "0.08777600854417057 0.179709132556066 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece16" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece17" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece17" type = "fixed" >
+	< origin rpy = "0 0 1.1862222222222223" xyz = "0.07503287669682997 0.1853916595065655 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece17" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece18" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece18" type = "fixed" >
+	< origin rpy = "0 0 1.256" xyz = "0.061924562611404846 0.190171892101294 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece18" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece19" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece19" type = "fixed" >
+	< origin rpy = "0 0 1.325777777777778" xyz = "0.04851486396813834 0.19402656512486385 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece19" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece20" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece20" type = "fixed" >
+	< origin rpy = "0 0 1.3955555555555557" xyz = "0.034869045274779235 0.19693691802611668 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece20" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece21" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece21" type = "fixed" >
+	< origin rpy = "0 0 1.4653333333333334" xyz = "0.021053520226634297 0.1988887862250326 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece21" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece22" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece22" type = "fixed" >
+	< origin rpy = "0 0 1.535111111111111" xyz = "0.0071355284735676585 0.19987267005121764 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece22" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece23" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece23" type = "fixed" >
+	< origin rpy = "0 0 1.6048888888888888" xyz = "-0.006817191632890279 0.19988378097844872 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece23" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece24" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece24" type = "fixed" >
+	< origin rpy = "0 0 1.6746666666666667" xyz = "-0.02073673271959657 0.19892206493025355 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece24" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece25" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece25" type = "fixed" >
+	< origin rpy = "0 0 1.7444444444444445" xyz = "-0.03455534889447117 0.1969922025430991 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece25" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece26" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece26" type = "fixed" >
+	< origin rpy = "0 0 1.8142222222222222" xyz = "-0.04820578546325041 0.19410358638590652 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece26" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece27" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece27" type = "fixed" >
+	< origin rpy = "0 0 1.8840000000000001" xyz = "-0.06162160625559852 0.1902702752467657 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece27" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece28" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece28" type = "fixed" >
+	< origin rpy = "0 0 1.9537777777777778" xyz = "-0.07473751696749335 0.18551092570933295 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece28" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece29" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece29" type = "fixed" >
+	< origin rpy = "0 0 2.0235555555555558" xyz = "-0.08748968294619155 0.1798487013519277 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece29" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece30" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece30" type = "fixed" >
+	< origin rpy = "0 0 2.0933333333333333" xyz = "-0.09981603987112397 0.17331116001125316 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece30" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece31" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece31" type = "fixed" >
+	< origin rpy = "0 0 2.163111111111111" xyz = "-0.11165659581865091 0.16593011965942298 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece31" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece32" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece32" type = "fixed" >
+	< origin rpy = "0 0 2.232888888888889" xyz = "-0.12295372324053695 0.15774150354706729 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece32" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece33" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece33" type = "fixed" >
+	< origin rpy = "0 0 2.3026666666666666" xyz = "-0.13365243943509889 0.14878516536619915 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece33" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece34" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece34" type = "fixed" >
+	< origin rpy = "0 0 2.3724444444444446" xyz = "-0.14370067414598311 0.13910469528376812 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece34" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece35" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece35" type = "fixed" >
+	< origin rpy = "0 0 2.4422222222222225" xyz = "-0.15304952298617872 0.12874720778992899 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece35" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece36" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece36" type = "fixed" >
+	< origin rpy = "0 0 2.512" xyz = "-0.16165348545386202 0.11776311239355906 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece36" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece37" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece37" type = "fixed" >
+	< origin rpy = "0 0 2.581777777777778" xyz = "-0.16947068638165763 0.10620586828104106 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece37" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece38" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece38" type = "fixed" >
+	< origin rpy = "0 0 2.651555555555556" xyz = "-0.17646307974153033 0.09413172413237905 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece38" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece39" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece39" type = "fixed" >
+	< origin rpy = "0 0 2.7213333333333334" xyz = "-0.18259663381339764 0.08159944436095125 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece39" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece40" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece40" type = "fixed" >
+	< origin rpy = "0 0 2.7911111111111113" xyz = "-0.18784149681625395 0.0686700231092815 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece40" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece41" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece41" type = "fixed" >
+	< origin rpy = "0 0 2.8608888888888893" xyz = "-0.19217214219568546 0.05540638739280204 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece41" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece42" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece42" type = "fixed" >
+	< origin rpy = "0 0 2.9306666666666668" xyz = "-0.19556749286066702 0.04187309083639468 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece42" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece43" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece43" type = "fixed" >
+	< origin rpy = "0 0 3.0004444444444447" xyz = "-0.19801102376498556 0.02813599949428368 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece43" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece44" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece44" type = "fixed" >
+	< origin rpy = "0 0 3.070222222222222" xyz = "-0.19949084233402906 0.01426197128238457 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece44" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece45" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece45" type = "fixed" >
+	< origin rpy = "0 0 3.14" xyz = "-0.1999997463455079 0.0003185305832973657 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece45" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece46" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece46" type = "fixed" >
+	< origin rpy = "0 0 3.2097777777777776" xyz = "-0.19953525898240454 -0.013626460392367534 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece46" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece47" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece47" type = "fixed" >
+	< origin rpy = "0 0 3.279555555555556" xyz = "-0.1980996408875502 -0.027505131888861358 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece47" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece48" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece48" type = "fixed" >
+	< origin rpy = "0 0 3.3493333333333335" xyz = "-0.19569987916116016 -0.041249936924889034 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece48" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece49" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece49" type = "fixed" >
+	< origin rpy = "0 0 3.4191111111111114" xyz = "-0.1923476533548748 -0.05479398004227223 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece49" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece50" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece50" type = "fixed" >
+	< origin rpy = "0 0 3.488888888888889" xyz = "-0.18805927862781371 -0.0680713428836712 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece50" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece51" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece51" type = "fixed" >
+	< origin rpy = "0 0 3.558666666666667" xyz = "-0.1828556263412989 -0.08101740501479471 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece51" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece52" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece52" type = "fixed" >
+	< origin rpy = "0 0 3.6284444444444444" xyz = "-0.17676202247871076 -0.09356915842966504 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece52" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece53" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece53" type = "fixed" >
+	< origin rpy = "0 0 3.6982222222222227" xyz = "-0.1698081243848626 -0.10566551420825546 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece53" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece54" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece54" type = "fixed" >
+	< origin rpy = "0 0 3.7680000000000002" xyz = "-0.16202777642479982 -0.11724759983400548 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece54" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece55" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece55" type = "fixed" >
+	< origin rpy = "0 0 3.837777777777778" xyz = "-0.15345884526452544 -0.12825904572418445 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece55" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece56" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece56" type = "fixed" >
+	< origin rpy = "0 0 3.9075555555555557" xyz = "-0.14414303557533645 -0.1386462595785667 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece56" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece57" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece57" type = "fixed" >
+	< origin rpy = "0 0 3.9773333333333336" xyz = "-0.1341256870587293 -0.14835868721117687 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece57" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece58" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece58" type = "fixed" >
+	< origin rpy = "0 0 4.0471111111111115" xyz = "-0.1234555537797488 -0.15734905859564446 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece58" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece59" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece59" type = "fixed" >
+	< origin rpy = "0 0 4.116888888888889" xyz = "-0.11218456688275485 -0.16557361792667546 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece59" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece60" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece60" type = "fixed" >
+	< origin rpy = "0 0 4.1866666666666665" xyz = "-0.10036758184446191 -0.1729923365779399 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece60" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece61" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece61" type = "fixed" >
+	< origin rpy = "0 0 4.256444444444445" xyz = "-0.08806211149436094 -0.17956910791991687 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece61" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece62" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece62" type = "fixed" >
+	< origin rpy = "0 0 4.326222222222222" xyz = "-0.0753280461019043 -0.18527192304952575 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece62" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece63" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece63" type = "fixed" >
+	< origin rpy = "0 0 4.396000000000001" xyz = "-0.06222736189277628 -0.1900730265762753 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece63" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece64" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece64" type = "fixed" >
+	< origin rpy = "0 0 4.465777777777778" xyz = "-0.048823819412894445 -0.1939490517067229 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece64" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece65" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece65" type = "fixed" >
+	< origin rpy = "0 0 4.535555555555556" xyz = "-0.035182653208187614 -0.19688113396979512 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece65" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece66" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece66" type = "fixed" >
+	< origin rpy = "0 0 4.605333333333333" xyz = "-0.021370254330472266 -0.19885500302947104 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece66" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece67" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece67" type = "fixed" >
+	< origin rpy = "0 0 4.675111111111111" xyz = "-0.007453847214656574 -0.1998610521379805 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece67" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece68" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece68" type = "fixed" >
+	< origin rpy = "0 0 4.744888888888889" xyz = "0.006498837500100176 -0.19989438489149036 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece68" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece69" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece69" type = "fixed" >
+	< origin rpy = "0 0 4.814666666666667" xyz = "0.02041989261290475 -0.19895483906072112 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece69" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece70" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece70" type = "fixed" >
+	< origin rpy = "0 0 4.884444444444445" xyz = "0.03424156486296847 -0.19704698738051066 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece70" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece71" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece71" type = "fixed" >
+	< origin rpy = "0 0 4.9542222222222225" xyz = "0.04789658468222225 -0.194180115294483 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece71" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece72" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece72" type = "fixed" >
+	< origin rpy = "0 0 5.024" xyz = "0.06131849359381978 -0.19036817576313717 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece72" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece73" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece73" type = "fixed" >
+	< origin rpy = "0 0 5.0937777777777775" xyz = "0.07444196766308761 -0.18562972135530406 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece73" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece74" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece74" type = "fixed" >
+	< origin rpy = "0 0 5.163555555555556" xyz = "0.08720313542670159 -0.17998781395347951 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece74" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece75" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece75" type = "fixed" >
+	< origin rpy = "0 0 5.233333333333333" xyz = "0.09953988875273785 -0.17346991251249474 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece75" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece76" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece76" type = "fixed" >
+	< origin rpy = "0 0 5.303111111111112" xyz = "0.1113921851186569 -0.16610773941779738 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece76" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece77" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece77" type = "fixed" >
+	< origin rpy = "0 0 5.372888888888889" xyz = "0.1227023398360406 -0.15793712609377444 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece77" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece78" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece78" type = "fixed" >
+	< origin rpy = "0 0 5.442666666666667" xyz = "0.13341530679984023 -0.1489978386135333 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece78" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece79" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece79" type = "fixed" >
+	< origin rpy = "0 0 5.512444444444444" xyz = "0.14347894639573477 -0.13933338415889376 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece79" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece80" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece80" type = "fixed" >
+	< origin rpy = "0 0 5.582222222222223" xyz = "0.15284427926170746 -0.12899079927254184 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece80" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece81" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece81" type = "fixed" >
+	< origin rpy = "0 0 5.652" xyz = "0.1614657246687901 -0.1180204209329151 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece81" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece82" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece82" type = "fixed" >
+	< origin rpy = "0 0 5.7217777777777785" xyz = "0.1693013223607875 -0.10647564156598788 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece82" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece83" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece83" type = "fixed" >
+	< origin rpy = "0 0 5.791555555555556" xyz = "0.17631293677329263 -0.09441264918630828 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece83" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece84" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece84" type = "fixed" >
+	< origin rpy = "0 0 5.8613333333333335" xyz = "0.18246644263807044 -0.08189015393200677 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece84" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece85" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece85" type = "fixed" >
+	< origin rpy = "0 0 5.931111111111112" xyz = "0.18773189106947644 -0.0689691023247239 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece85" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece86" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece86" type = "fixed" >
+	< origin rpy = "0 0 6.000888888888889" xyz = "0.19208365532457672 -0.05571238064514226 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece86" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece87" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece87" type = "fixed" >
+	< origin rpy = "0 0 6.070666666666667" xyz = "0.19550055552755874 -0.042184508867781294 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece87" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece88" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece88" type = "fixed" >
+	< origin rpy = "0 0 6.140444444444444" xyz = "0.19796596175140438 -0.028451326644666305 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece88" />
+	< axis xyz = "0 0 0" />
+< /joint >
+<link name= "piece89" >
+
+	< contact >
+		< lateral_friction value = "0.4" />
+		< spinning_friction value = "0" />
+		< rolling_friction value = "0" />
+	< /contact >
+
+	< visual >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+		< material name = "" >
+			< color rgba = "0.0 0.0 0.1 0.5"/>
+		< /material >
+	< /visual >
+
+
+	< collision >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< geometry >
+			<box size = "0.05 0.02 0.5" />
+		< /geometry >
+	< /collision >
+
+
+	< inertial >
+		<origin rpy="0 0 0" xyz = "0 0 0" />
+		< mass value = "1" />
+<inertia ixx="0.0017166666666666667" ixy="0" ixz="0" iyy="0.0017166666666666667" iyz="0" izz="0.0001"/>
+	< /inertial >
+
+< /link >
+
+< joint name = "piece89" type = "fixed" >
+	< origin rpy = "0 0 6.210222222222223" xyz = "0.19946787495512988 -0.014579672866174776 0.25" />
+	< parent link = "cylinder_top" />
+	< child link = "piece89" />
+	< axis xyz = "0 0 0" />
+< /joint >
+
+</robot>

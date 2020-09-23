@@ -46,7 +46,7 @@ I = Interface.Interface()
 AC = ArmController(p,TheArm)
 
 #Run the simulation
-for i in range (0,200000):
+for i in range (0,20000):
     AC.frankaJointsLock()
     if i % 20 == 0:
         proximal1, proximal2, proximal3, distal1, distal2, distal3 = G.readTactile()
