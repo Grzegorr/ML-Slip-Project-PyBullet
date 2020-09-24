@@ -90,38 +90,43 @@ np.save("7_RNN/y",y)
     
 ###TimeShifts######
 
-
 for i in range(len(y)):
-    y[i,0:34] = y[i,1:35] 
+    x[i,0:34,0:27] = x[i,1:35,0:27]
+    x[i, 34, 0:27] = np.zeros(27)
 np.save("8_RNNT1/x",x)
 np.save("8_RNNT1/y",y)
 
 for i in range(len(y)):
-    y[i,0:34] = y[i,1:35] 
+    x[i, 0:34, 0:27] = x[i, 1:35, 0:27]
+    x[i, 34, 0:27] = np.zeros(27)
 np.save("9_RNNT2/x",x)
 np.save("9_RNNT2/y",y)
 
 
 for i in range(len(y)):
-    y[i,0:34] = y[i,1:35] 
+    x[i, 0:34, 0:27] = x[i, 1:35, 0:27]
+    x[i, 34, 0:27] = np.zeros(27)
 np.save("10_RNNT3/x",x)
 np.save("10_RNNT3/y",y)
 
 
 for i in range(len(y)):
-    y[i,0:34] = y[i,1:35] 
+    x[i, 0:34, 0:27] = x[i, 1:35, 0:27]
+    x[i, 34, 0:27] = np.zeros(27)
 np.save("11_RNNT4/x",x)
 np.save("11_RNNT4/y",y)
 
 
 for i in range(len(y)):
-    y[i,0:34] = y[i,1:35] 
+    x[i, 0:34, 0:27] = x[i, 1:35, 0:27]
+    x[i, 34, 0:27] = np.zeros(27)
 np.save("12_RNNT5/x",x)
 np.save("12_RNNT5/y",y)
 
 
 for i in range(len(y)):
-    y[i,0:34] = y[i,1:35] 
+    x[i, 0:34, 0:27] = x[i, 1:35, 0:27]
+    x[i, 34, 0:27] = np.zeros(27)
 np.save("13_RNNT6/x",x)
 np.save("13_RNNT6/y",y)
 

@@ -13,11 +13,16 @@ from keras.models import Sequential
 from keras.layers import Flatten, Dense, Dropout, LSTM
 import keras
 from matplotlib import pyplot as plt
+import tensorflow as tf
 
+import os
+#os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
-#location = "7_RNN"
+print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+
+location = "7_RNN"
 #location = "8_RNNT1"
-location = "9_RNNT2"
+#location = "9_RNNT2"
 #location = "10_RNNT3"
 #location = "11_RNNT4"
 #location = "12_RNNT5"
@@ -31,25 +36,29 @@ y = keras.utils.to_categorical(y, 2)
 
 print("Length of x: " + str(len(x)))
 
-length = len(x)
+length = int(len(x))
 boundry = int(0.9 * len(x))
 x_train = x[0:boundry]
 y_train = y[0:boundry]
 x_val = x[boundry + 1:length]
 y_val = y[boundry + 1:length]
 
+
+
 #print(x_val)
-print(len(x_train[0]))
+#print(len(x_train[0]))
 
 
 model = Sequential()
 model.add(LSTM(128, activation='relu',return_sequences=True,input_shape = (35,38)))
 model.add(LSTM(256, activation='relu',return_sequences=True))
 model.add(LSTM(128, activation='relu',return_sequences=True))
-model.add(Dense(2, activation='softmax'))
+model.add(Dense(2,activation = 'softmax'))
 model.compile(loss=keras.losses.categorical_crossentropy, optimizer=keras.optimizers.Adadelta(), metrics=['accuracy'])
-history = model.fit(x_train, y_train,epochs=2000,batch_size=32,validation_data=(x_val, y_val))
-model.summary() 
+model.summary()
+history = model.fit(x_train, y_train,epochs=2,batch_size=32,validation_data=(x_val, y_val))
+print("Training Finished.")
+
 
 
 #print(model.history.history)
