@@ -3802,11 +3802,11 @@
 < /link >
 
 < joint name = "top_to_slider" type = "prismatic" >
-	< origin rpy = "0 0 0" xyz = "0 0 1" />
+	< origin rpy = "0 0 0" xyz = "0 0 0.2" />
 	< parent link = "cylinder_top" />
 	< child link = "cylinder_slider" />
 	< axis xyz = "0 0 0" />
-	< limit lower = "0" upper = "1" />
+	< limit lower = "-200" upper = "200" effort = "2" />
 < /joint >
 
 </robot>

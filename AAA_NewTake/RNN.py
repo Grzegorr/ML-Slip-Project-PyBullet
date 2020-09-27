@@ -10,7 +10,7 @@ import numpy as np
 import pybullet as p
 from math import *
 from keras.models import Sequential
-from keras.layers import Flatten, Dense, Dropout, LSTM
+from keras.layers import Flatten, Dense, Dropout, LSTM, RNN
 import keras
 from matplotlib import pyplot as plt
 import tensorflow as tf
@@ -45,18 +45,19 @@ y_val = y[boundry + 1:length]
 
 
 
+
 #print(x_val)
 #print(len(x_train[0]))
 
 
 model = Sequential()
-model.add(LSTM(128, activation='relu',return_sequences=True,input_shape = (35,38)))
+model.add(LSTM(128,return_sequences=True, activation='relu',input_shape = (35,38)))
 model.add(LSTM(256, activation='relu',return_sequences=True))
 model.add(LSTM(128, activation='relu',return_sequences=True))
 model.add(Dense(2,activation = 'softmax'))
 model.compile(loss=keras.losses.categorical_crossentropy, optimizer=keras.optimizers.Adadelta(), metrics=['accuracy'])
+history = model.fit(x_train, y_train,epochs=2000,batch_size=32,validation_data=(x_val, y_val))
 model.summary()
-history = model.fit(x_train, y_train,epochs=2,batch_size=32,validation_data=(x_val, y_val))
 print("Training Finished.")
 
 
