@@ -17,7 +17,7 @@ p.setGravity(0,0,-10)
 #Load-in a plane
 planeId = p.loadURDF("plane.urdf")
 
-startPos = [0,0,30]
+startPos = [0,0,3]
 startOrientation = p.getQuaternionFromEuler([0,0,0])
 TheArm = p.loadURDF("COMcylinder.urdf",startPos, startOrientation)
 

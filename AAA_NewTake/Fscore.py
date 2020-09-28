@@ -19,12 +19,17 @@ import numpy as np
 #location = "3_allPoseDiff"
 #location = "4_UpToFail"
 #location = "1_DatasetSplitAggresive"
-#location = "2_xyzDiffAggresive"
-location = "3_allPoseDiffAggresive"
+location = "2_xyzDiffAggresive"
+#location = "3_allPoseDiffAggresive"
 #location = "4_UpToFailAggresive"
 
-y_predicted = np.load(location + "/y_predicted.npy", allow_pickle = True)
-y_GT_for_predictions = np.load(location + "/y_GT_for_predictions.npy", allow_pickle = True)  
+try:
+    y_predicted = np.load(location + "/y_predicted.npy", allow_pickle = True)
+    y_GT_for_predictions = np.load(location + "/y_GT_for_predictions.npy", allow_pickle = True)
+except:
+    y_predicted = np.load(location + "/y_predicted.npy", allow_pickle=True)
+    y_GT_for_predictions = np.load(location + "/y_GT_for_predictions.npy", allow_pickle=True)
+
 print(y_predicted)
 print(y_GT_for_predictions)
 
@@ -56,6 +61,8 @@ print("FN: " + str(FN) + "  ")
 F_score = (2.0*TP)/(2.0*TP + FP + FN)
 print("FScore: " + str(F_score) + "  ")
 
+acc = 1.0*(TP + TN)/(TP + TN + FP + FN)
+print("Accuracy: " + str(acc) + "  ")
 
 
 

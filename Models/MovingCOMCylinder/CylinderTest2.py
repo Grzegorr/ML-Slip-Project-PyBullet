@@ -17,7 +17,7 @@ p.setGravity(0,0,-10)
 #Load-in a plane
 planeId = p.loadURDF("plane.urdf")
 
-startPos = [0,0,30]
+startPos = [0,0,3]
 startOrientation = p.getQuaternionFromEuler([0,0,0])
 TheArm = p.loadURDF("COMcylinder.urdf",startPos, startOrientation)
 
@@ -27,7 +27,7 @@ for x in range(-1,2):
             x = x/10.0
             y = y / 10.0
             z = z / 10.0
-            startPos = [0+x,0+y,30.25+z]
+            startPos = [0+x,0+y,3.25+z]
             startOrientation = p.getQuaternionFromEuler([0,0,0])
             TheArm = p.loadURDF("box2.urdf",startPos, startOrientation)
 

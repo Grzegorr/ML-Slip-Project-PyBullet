@@ -3805,8 +3805,8 @@
 	< origin rpy = "0 0 0" xyz = "0 0 0.2" />
 	< parent link = "cylinder_top" />
 	< child link = "cylinder_slider" />
-	< axis xyz = "0 0 0" />
-	< limit lower = "-200" upper = "200" effort = "2" />
+	< axis xyz = "0 0 1" />
+	< limit lower = "-1" upper = "0" effort = "2" />
 < /joint >
 
 </robot>

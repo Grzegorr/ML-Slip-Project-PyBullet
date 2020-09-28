@@ -38,9 +38,11 @@ def addJoint(parent_link, child_link, joint_name, joint_type,x,y,z,r,p,yaw,low_l
     text_file.write('\t< origin rpy = "' + str(r) + ' ' + str(p) + ' ' + str(yaw) + '" xyz = "' + str(x) + ' ' + str(y) + ' ' + str(z) + '" />\n')
     text_file.write('\t< parent link = "' + str(parent_link) + '" />\n')
     text_file.write('\t< child link = "' + str(child_link) + '" />\n')
-    text_file.write('\t< axis xyz = "0 0 0" />\n')
     if joint_type == "prismatic":
         text_file.write('\t< limit lower = "' + str(low_limit) + '" upper = "' + str(high_limit) + '" />\n')
+        text_file.write('\t< axis xyz = "0 0 1" />\n')
+    else:
+        text_file.write('\t< axis xyz = "0 0 0" />\n')
     text_file.write('< /joint >\n')
 
 def addBoxLink(link_name, lat_friction, size_x,size_y,size_z,mass,a_transparency):

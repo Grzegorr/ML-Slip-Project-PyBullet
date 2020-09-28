@@ -25,15 +25,13 @@ n = p.getNumJoints(Cylinder)
 for i in range(n):
     print(p.getJointInfo(Cylinder,i))
 
-#p.setJointMotorControl2(bodyUniqueId=Cylinder, jointIndex=0, controlMode=p.VELOCITY_CONTROL, force = 0)
+p.setJointMotorControl2(bodyUniqueId=Cylinder, jointIndex=0, controlMode=p.VELOCITY_CONTROL, force = 0)
 
 
 
 
 for i in range (0,20000):
     #p.setJointMotorControl2(bodyUniqueId=Cylinder, jointIndex=0, controlMode=p.POSITION_CONTROL, targetPosition = -0.1, force = 1000)
-    p.setJointMotorControl2(bodyIndex=Cylinder, jointIndex=0, controlMode=p.POSITION_CONTROL,
-                                      targetPosition=0.1, targetVelocity=1, force=5000,
-                                      maxVelocity=1, velocityGain=1, positionGain=1)
+    #p.setJointMotorControl2(bodyIndex=Cylinder, jointIndex=0, controlMode=p.POSITION_CONTROL,targetPosition=0.1, targetVelocity=1, force=5000,maxVelocity=1, velocityGain=1, positionGain=1)
     p.stepSimulation()
     time.sleep(1./240.)
